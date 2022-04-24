@@ -16,21 +16,21 @@
 //Player:
 //  1. Card
 //  2. Score
-struct CARD
+struct Card
 {
     int number;
     char* color;
 };
-struct PLAYER
+struct Player 
 {
-    struct CARD playercard[5];
+    struct Card cards[5];
     int score;
 };
 
 
-void init(struct CARD a[52]);                                                           //Initialize a deck
-void shuffle(struct CARD a[52]);                                                        //Shuffle the deck
-void deal(struct PLAYER player[2], struct CARD card[52], int state);                    //Deal the card to each player
+void init(struct Card a[52]);                                                           //Initialize a deck
+void shuffle(struct Card a[52]);                                                        //Shuffle the deck
+void deal(struct Player player[2], struct Card card[52], int state);                    //Deal the card to each player
 
 
 
