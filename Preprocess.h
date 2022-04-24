@@ -9,8 +9,14 @@
 #define Preprocess_h
 
 #include <stdio.h>
+struct CARD
+{
+    int number;
+    char* color;
+};
 
-void shuffle(int a[52]);
+void init(struct CARD a[52]);
+void shuffle(struct CARD a[52]);
 
 
 
