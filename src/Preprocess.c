@@ -10,6 +10,21 @@
 #include <stdlib.h>
 #include <time.h>
 
+const int max_card = 5;
+const int max_player = 3;
+const int deck = 52;
+
+struct Card
+{
+    int number;
+    color c;
+};
+struct Player
+{
+    struct Card card[max_card];
+    int score;
+};
+
 /***********************************************************
 Initialization function:
 Inittialize the color and number of the card.
@@ -17,40 +32,15 @@ Define a struct to contain the number and color of a deck:
   1. Number: 1-13 => A, 2-10, J, Q, K
   2. Color: Spade, Heart, Diamond, Club
 ************************************************************/
-void init(struct Card a[52])
+void init(struct Card a[deck])
 {
     int i;
-    for(i = 0;i < 13;i++)
+    for(i = 0; i < deck; i++)
     {
-        a[i].number = i + 1;
-        a[i].color = "Spade";
-    }
-    for(i = 13;i < 26;i++)
-    {
-        a[i].number = i - 12;
-        a[i].color = "Heart";
-    }
-    for(i = 26;i < 39;i++)
-    {
-        a[i].number = i - 25;
-        a[i].color = "Diamond";
-    }
-    for(i = 39;i < 52;i++)
-    {
-        a[i].number = i - 38;
-        a[i].color = "Club";
+        a[i].number = i % 13 + 1;
+        a[i].c = i % 4;
     }
 }
-
-// A cooler version for init if you use enum
-//void Cards_Init(struct Card a[52]){
-//    for (int i = 0; i < 52; i++)
-//    {
-//        a[i].number = i % 12 +1;
-//        a[i].color = i % 4;
-//    }
-//}
-
 
 /***********************************************************
 Shuffle function:
@@ -64,9 +54,9 @@ Principle:
 void shuffle(struct Card a[52])
 {
     srand((unsigned int)time(NULL));
-    for(int i = 0;i < 52;i++)
+    for(int i = 0;i < deck;i++)
     {
-        int j = rand()%52;
+        int j = rand()%deck;
         struct Card temp = a[i];
         a[i] = a[j];
         a[j] = temp;
@@ -88,66 +78,17 @@ Principle:
   2. To avoid duplication, an interal array is used to store the numbers of cards having already been chosen
 ************************************************************/
 
-void deal(struct Player player[2], struct Card card[52], int state)
+void deal(struct Player player[max_player], struct Card card[deck])
 {
     int i, j;
-    int cardnum[10];//Card that has been dealed
-    if(state == 1)//Computer-Computer mode
+    for(i = 0; i < max_card; i++)
     {
-        for(i = 0;i < 4;i++)
+        for(j = 0; j < max_player; j++)
         {
-            srand((unsigned int)time(NULL));
-            //Deal card to player 1
-            int num1 = rand()%52;
-            for(j = 0;j < 2 * i;j++)//Avoid duplication
-            {
-                if(num1 == cardnum[j])
-                    num1 = rand()%52;
-            }
-            cardnum[2 * i] = num1;
-            player[0].cards[i] = card[num1];
-            
-            
-            //Deal card to player 2
-            int num2 = rand()%52;
-            for(j = 0;j < 2 * i + 1;j++)//Avoid duplication
-            {
-                if(num2 == cardnum[j])
-                    num2 = rand()%52;
-            }
-            cardnum[2 * i + 1] = num2;
-            player[1].cards[i] = card[num2];
+            player[j].card[i] = card[max_player * i + j];
         }
     }
-    else if(state == 2)
-    {
-        for(i = 0;i < 4;i++)
-        {
-            int num1;
-            printf("please choose the number of your card %d:\n", i + 1);
-            scanf("%d", &num1);
-            for(j = 0;j < 2 * i;j++)
-            {
-                if(num1 == cardnum[j])
-                {
-                    printf("This card has been taken! Choose another one:\n");
-                    scanf("%d", &num1);
-                }
-            }
-            cardnum[2 * i] = num1;
-            player[0].cards[i] = card[num1];
-            
-            srand((unsigned int)time(NULL));
-            int num2 = rand()%52;
-            for(j = 0;j < 2 * i + 1;j++)
-            {
-                if(num2 == cardnum[j])
-                    num2 = rand()%52;
-            }
-            cardnum[2 * i + 1] = num2;
-            player[1].cards[i] = card[num2];
-        }
-    }
+    
     return;
 }
 // Use enum instead of magic number, or else you will be confues with what is state 1 and state 2, jsut use "E" or "P" or sth
