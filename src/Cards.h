@@ -13,7 +13,7 @@ typedef enum {heart, club, diamond, spade} Color;
 static const int color_num  = 4;
 static const int sets_size = 13; 
 static const int CARDHEAP_SIZE = 52;
-
+static const int panacea = 11;// J is panacea card
 
 typedef struct 
 {
@@ -28,6 +28,7 @@ typedef struct
 
 
 CardStack * CardStack_Init();
+int getpoint(const Card *card);
 void displayCard(const Card *card);
 void display_CardHeap(const CardStack *stack);
 void destruct_cardstack(CardStack *stack);

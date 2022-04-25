@@ -24,7 +24,7 @@ bool isfull(const CardStack * stack){
 
 Card* pop(CardStack *stack){
     Card* card;
-    if(ifempty(stack)) {return NULL; printf("Pop Error!");}
+    if(ifempty(stack)) {printf("Pop Error!");return NULL; }
     else
         return card = stack->cards[--stack->top]; 
 }
@@ -57,10 +57,7 @@ CardStack * CardStack_Init(){
     srand((unsigned int)time(NULL));
     //shuffle the series
     for (int i = 0; i < CARDHEAP_SIZE; i++)
-    {
-        int j = rand() % CARDHEAP_SIZE;
-        swap(&n[i], &n[j]);    
-    }
+        swap(&n[i], &n[rand() % CARDHEAP_SIZE]);    
     int k = 0;
     while (!isfull(stack))
     {
@@ -71,6 +68,18 @@ CardStack * CardStack_Init(){
        k++;
     }   
     return stack;
+}
+
+int getpoint(const Card *card){
+    int point = 0;
+    if((card->number > 0) && (card->number < 11)) point = card->number;
+    else if (card->number == 12) point = 12;
+    else if (card->number == 13) point = 0;
+    else {
+        printf("You can not give up this card: ");
+        displayCard(card);
+    }
+    return point;
 }
 
 /***********************************************************

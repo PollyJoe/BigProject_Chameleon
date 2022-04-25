@@ -2,6 +2,7 @@
 #define PLAYER_H_ 
 #include<stdio.h>
 #include<stdlib.h>
+#include <stdbool.h>
 #include "Cards.h"
 
 static const int playercards_capacity = 5;
@@ -9,6 +10,7 @@ static const int player_num = 2;
 typedef struct 
 {
     Card *cards_on_hand[playercards_capacity];
+    bool deployable[playercards_capacity];
     int score;
 }Player;
 typedef struct 
