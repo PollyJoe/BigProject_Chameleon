@@ -10,10 +10,13 @@ int main(int argc, const char * argv[])
 {
     CardStack *stack = CardStack_Init();
     Players *players = Players_Init();
-    //display_CardHeap(stack); 
+    Deck *deck = Deck_Init(); 
     deal(stack, players);
     display_players(players);
+    int turn_num = 0;
+    while (!ifempty(stack))
+        play_a_turn(players, stack, deck, turn_num++);
     
-    Destruct(stack, players);
+    Destruct(stack, players, deck);
     return 0;
 }

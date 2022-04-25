@@ -7,10 +7,11 @@ typedef struct
 {
     Color current_color;
     int current_num;
-    Card *card_slot[player_num];
 }Deck;
 
+Deck *Deck_Init();
+void destruct_deck(Deck *deck);
 void changecolor(Deck *deck, Color c);
 void changenum(Deck *deck, int point);
-void clearDeck(Deck *deck);
+
 #endif // !DECK_H_

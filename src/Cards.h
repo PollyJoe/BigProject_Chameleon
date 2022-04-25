@@ -9,7 +9,8 @@
 #define CARDS_H_ 
 
 #include <stdio.h>
-typedef enum {heart, club, diamond, spade} Color;
+#include <stdbool.h> 
+typedef enum {heart, club, diamond, spade, PANACEA} Color;
 static const int color_num  = 4;
 static const int sets_size = 13; 
 static const int CARDHEAP_SIZE = 52;
@@ -28,11 +29,12 @@ typedef struct
 
 
 CardStack * CardStack_Init();
+void destruct_cardstack(CardStack *stack);
+
 int getpoint(const Card *card);
 void displayCard(const Card *card);
 void display_CardHeap(const CardStack *stack);
-void destruct_cardstack(CardStack *stack);
 Card* pop(CardStack *stack);
-
+bool ifempty(const CardStack *stack);
 
 #endif /* Preprocess_h */

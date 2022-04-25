@@ -5,10 +5,8 @@
 //  Created by Polly Zhou on 2022/4/23.
 //
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <stdbool.h> 
 
 #include "Cards.h"
 
