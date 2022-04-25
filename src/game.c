@@ -64,6 +64,7 @@ void play_a_turn(Players *ps, CardStack *stack, Deck *deck, int turn_num){
     int index = select_card(&deploy_rule, offensive, &if_giveup, deck);
     const Card *card_to_give = givecard(offensive, index);
     check_deck(defensive, if_giveup, deck, card_to_give);
+    if(if_giveup) {display_turn(ps, turn_num); return;}
    //defensive get a card, and give a card
     if(!ifempty(stack)) getcard(defensive, stack);
     index = select_card(&deploy_rule, defensive, &if_giveup, deck);
