@@ -27,11 +27,11 @@ typedef struct
 }CardStack;
 
 
-void CardStack_Init(CardStack *stack);
+CardStack * CardStack_Init();
 void displayCard(const Card *card);
 void display_CardHeap(const CardStack *stack);
-
-
+void destruct_cardstack(CardStack *stack);
+Card* pop(CardStack *stack);
 
 
 #endif /* Preprocess_h */
