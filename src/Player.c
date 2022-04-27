@@ -27,7 +27,10 @@ Players *Players_init()                                                 //Initia
         players->player[i] = (Player*)malloc(sizeof(Player));
         players->player[i]->score = 0;
         for(j = 0; j < max_card_inhand; j++)
+        {
             players->player[i]->card_inhand[j] = NULL;
+            players->player[i]->null_slot = max_card_inhand - 1;
+        }
     }
     return players;
 }
@@ -48,12 +51,12 @@ void Display_Player(Player *player)                                     //Displa
     }
 }
 
-void Display_Dlayers(Players *players)
+void Display_Players(Players *players)                                  //Display the information of all the players
 {
     int i;
     for(i = 0; i < max_player; i++)
     {
-        printf("Player %d:", i+1);
+        printf("Player %d:", i + 1);
         Display_Player(players->player[i]);
     }
 }
@@ -63,3 +66,15 @@ void Display_Dlayers(Players *players)
     1. Take one card from the stack;
     2. Give a card;
 *************************************************************************************************/
+void takecard(Player *player, Cardstack *cardstack)                     //Take a card from the cardstack
+{
+    player->card_inhand[player->null_slot] = pop(cardstack);
+}
+
+Card *givecard(Player *player, int position)                            //Give a card
+{
+    Card *card = player->card_inhand[position];
+    player->card_inhand[position] = NULL;
+    player->null_slot = position;
+    return card;
+}

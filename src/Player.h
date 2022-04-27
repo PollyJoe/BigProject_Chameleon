@@ -34,6 +34,7 @@ typedef struct
 {
     Card *card_inhand[max_card_inhand];
     int score;
+    int null_slot;
 }Player;
 typedef struct
 {
@@ -44,7 +45,8 @@ typedef struct
 Players *Players_init();
 void Update_Score(Player *player, Card *discard);
 void Display_Player(Player *player);
-void Display_Dlayers(Players *players);
-
+void Display_Players(Players *players);
+void takecard(Player *player, Cardstack *cardstack);
+Card *givecard(Player *player, int position);
 
 #endif /* Player_h */

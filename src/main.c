@@ -14,15 +14,22 @@ int main()
 {
     Cardstack *cardstack = Cardstack_init();
     Players *players = Players_init();
-    srand((unsigned int)time(NULL));
+    for(int i = 0; i < max_player * max_card_inhand; i++)
+    {
+        players->player[i % max_player]->card_inhand[i / max_player] = pop(cardstack);
+    }
+    Display_Players(players);
+    printf("\n");
     for(int i = 0; i < max_player; i++)
     {
-        for(int j = 0; j < max_card_inhand; j++)
-        {
-            players->player[i]->card_inhand[j] = cardstack->cards[rand()%cardstack_size];
-        }
+        Card *card = givecard(players->player[i], 1);
+        printf("The second card of player %d is : ", i + 1);
+        display_card(card);
+        printf("\n");
+        takecard(players->player[i], cardstack);
     }
-    Display_Dlayers(players);
+    printf("\n");
+    Display_Players(players);
     
     return 0;
 }
