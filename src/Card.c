@@ -16,11 +16,11 @@
     1. Whether the cardstack is empty;
     2. Whether the cardstack is full;
 ***************************************************************************/
-bool ifempty(Cardstack *cardstack)
+bool ifEmpty(Cardstack *cardstack)
 {
     return (cardstack->top == -1) ? true : false;
 }
-bool iffull(Cardstack *cardstack)
+bool ifFull(Cardstack *cardstack)
 {
     return (cardstack->top == cardstack_size) ? true : false;
 }
@@ -34,14 +34,14 @@ Operate the cards of the cardstack:
 
 void push(Card *card, Cardstack *cardstack)         //Operation 1: Put the card into the stack
 {
-    if(!iffull(cardstack))
+    if(!ifFull(cardstack))
         cardstack->cards[cardstack->top++] = card;
 }
 
 Card *pop(Cardstack *cardstack)                     //Operation 2: Take the card from the stack
 {
     Card *card;
-    if(ifempty(cardstack))
+    if(ifEmpty(cardstack))
         return NULL;
     else
         card = cardstack->cards[--cardstack->top];
@@ -54,7 +54,7 @@ void swap(Card *a, Card *b)                         //Swap two cards
     temp = *a; *a = *b; *b = temp;
 }
 
-Cardstack *init()                                   //Operation 3: Initialize the stack and shuffle
+Cardstack *Cardstack_init()                         //Operation 3: Initialize the stack and shuffle
 {
     Cardstack *cardstack;
     cardstack = (Cardstack*)malloc(sizeof(Cardstack));
@@ -102,4 +102,21 @@ void display_card(Card *card)
 /************************************************************************
  Get the point of each card ( only used when the player decide to discard his card )
 **************************************************************************/
+int get_point(Card *card)
+{
+    int point = 0;
+    if(card->number != 11) point = card->number;
+    else printf("This is a Chameleon!\n");
+    return point;
+}
 
+/*********************************************************************************
+ Destruct a cardstack
+************************************************************************************/
+void destruct_cardstack(Cardstack *cardstack)
+{
+    free(cardstack);
+    int i;
+    for(i = 0; i < cardstack_size; i++)
+        free(cardstack->cards[i]);
+}

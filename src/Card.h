@@ -19,7 +19,7 @@ Features of cards:
         (1) Data of each card;
         (2) Top of the stack;
         (3) Size of the stack
-Operations towards cards:
+Basical operations towards cards:
     1. Initialize the cardstack and shuffle the cards;
     2. Transfer the number of the card into different points;
     3. Judge the status of the stack:
@@ -43,14 +43,14 @@ typedef struct
     int top;
 } Cardstack;
 
-bool ifempty(Cardstack *cardstack);
-bool iffull(Cardstack *cardstack);
+bool ifEmpty(Cardstack *cardstack);
+bool ifFull(Cardstack *cardstack);
 void push(Card *card, Cardstack *cardstack);
 Card *pop(Cardstack *cardstack);
 
 void swap(Card *a, Card *b);
-Cardstack *init();
+Cardstack *Cardstack_init();
 void display_card(Card *card);
-
+int get_point(Card *card);
 
 #endif /* Card_h */

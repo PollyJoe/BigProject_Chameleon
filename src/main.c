@@ -7,15 +7,22 @@
 
 #include <stdio.h>
 #include "Card.h"
-
-
+#include "Player.h"
+#include <stdlib.h>
+#include <time.h>
 int main()
 {
-    Cardstack *cardstack = init();
-    for(int i =0; i < cardstack_size; i++)
+    Cardstack *cardstack = Cardstack_init();
+    Players *players = Players_init();
+    srand((unsigned int)time(NULL));
+    for(int i = 0; i < max_player; i++)
     {
-        display_card(cardstack->cards[i]);
-        printf("\n");
+        for(int j = 0; j < max_card_inhand; j++)
+        {
+            players->player[i]->card_inhand[j] = cardstack->cards[rand()%cardstack_size];
+        }
     }
+    Display_Dlayers(players);
+    
     return 0;
 }
