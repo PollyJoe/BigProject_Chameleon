@@ -30,23 +30,23 @@
 static const int max_card_inhand = 5;
 static const int max_player = 3;
 
-typedef struct
+typedef struct                                                  //Set a type to describe one player
 {
     Card *card_inhand[max_card_inhand];
     int score;
     int null_slot;
 }Player;
-typedef struct
+typedef struct                                                  //Set a type to describe a group of players
 {
     Player *player[max_player];
 }Players;
 
 
-Players *Players_init();
-void Update_Score(Player *player, Card *discard);
-void Display_Player(Player *player);
-void Display_Players(Players *players);
-void takecard(Player *player, Cardstack *cardstack);
-Card *givecard(Player *player, int position);
+Players *Players_init();                                        //Initialize the players
+void Update_Score(Player *player, Card *discard);               //Update the score
+void Display_Player(Player *player);                            //Display information of one player
+void Display_Players(Players *players);                         //Display the information of all the players
+void takecard(Player *player, Cardstack *cardstack);            //Take a card from the cardstack
+Card *givecard(Player *player, int position);                   //Give a card
 
 #endif /* Player_h */
