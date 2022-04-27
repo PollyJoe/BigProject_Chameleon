@@ -16,17 +16,17 @@
     1. Whether the cardstack is empty;
     2. Whether the cardstack is full;
 ***************************************************************************/
-bool ifEmpty(Cardstack *cardstack)
+bool ifEmpty(Cardstack *cardstack)                  //Judge whether the stack is empty
 {
     return (cardstack->top == -1) ? true : false;
 }
-bool ifFull(Cardstack *cardstack)
+bool ifFull(Cardstack *cardstack)                   //Judge whether the stack is full
 {
     return (cardstack->top == cardstack_size) ? true : false;
 }
 
 /************************************************************************
-Operate the cards of the cardstack:
+ Operate the cards of the cardstack:
     1. Put cards into the stack;
     2. Take the card from the stack;
     3. Initialize the cardstack and shuffle the card;
@@ -66,6 +66,7 @@ Cardstack *Cardstack_init()                         //Operation 3: Initialize th
         cardstack->cards[i] = (Card*)malloc(sizeof(Card));
         cardstack->cards[i]->number = i % set_size;
         cardstack->cards[i]->c = i % color_num;
+        cardstack->top++;
     }
     //Shuffle
     srand((unsigned int)time(NULL));
@@ -76,7 +77,7 @@ Cardstack *Cardstack_init()                         //Operation 3: Initialize th
 
 /***********************************************************************
  Display the card
-**************************************************************************/
+*************************************************************************/
 void display_card(Card *card)
 {
     switch(card->c)
