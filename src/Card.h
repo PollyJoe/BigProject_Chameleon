@@ -10,6 +10,8 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <time.h>
 /******************************************************************************************
 Features of cards:
     1. Single card:
@@ -43,14 +45,14 @@ typedef struct
     int top;
 } Cardstack;
 
-bool ifEmpty(Cardstack *cardstack);
-bool ifFull(Cardstack *cardstack);
-void push(Card *card, Cardstack *cardstack);
-Card *pop(Cardstack *cardstack);
+bool ifEmpty(Cardstack *cardstack);                                 //Judge whether the stack is empty
+bool ifFull(Cardstack *cardstack);                                  //Judge whether the stack is full
+void push(Card *card, Cardstack *cardstack);                        //Operation 1: Put the card into the stack
+Card *pop(Cardstack *cardstack);                                    //Operation 2: Take the card from the stack
 
-void swap(Card *a, Card *b);
-Cardstack *Cardstack_init();
+void swap(Card *a, Card *b);                                        //Swap two cards
+Cardstack *Cardstack_init();                                        //Operation 3: Initialize the stack and shuffle
 void display_card(Card *card);
 int get_point(Card *card);
-
+void destruct_cardstack(Cardstack *cardstack);                      //Destruct the stack
 #endif /* Card_h */

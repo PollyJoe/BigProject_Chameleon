@@ -8,7 +8,6 @@
 #ifndef Player_h
 #define Player_h
 
-#include <stdio.h>
 #include "Card.h"
 
 /***************************************************************************************
@@ -35,6 +34,7 @@ typedef struct                                                  //Set a type to 
     Card *card_inhand[max_card_inhand];
     int score;
     int null_slot;
+    bool valid[max_card_inhand];                                //Judge whether his cards are available
 }Player;
 typedef struct                                                  //Set a type to describe a group of players
 {

@@ -4,18 +4,13 @@
 //
 //  Created by Polly Zhou on 2022/4/26.
 //
-
-#include <stdio.h>
-#include "Card.h"
-#include "Player.h"
-#include <stdlib.h>
-#include <time.h>
+#include "Game.h"
 int main()
 {
     //Print the welcome interface for command line mode
     FILE *fp;
     char ch;
-    fp = fopen("Chame_slant.txt","r");
+    fp = fopen("Chame_slant1.txt","r");
     if(fp == NULL) printf("ERROR!");
     else
     {
@@ -30,7 +25,7 @@ int main()
     //Debug the game
     Cardstack *cardstack = Cardstack_init();
     Players *players = Players_init();
-    for(int i = 0; i < max_player * max_card_inhand; i++)
+    for(int i = 0; i < max_player * (max_card_inhand-1); i++)
     {
         players->player[i % max_player]->card_inhand[i / max_player] = pop(cardstack);
     }

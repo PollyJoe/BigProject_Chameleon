@@ -7,10 +7,23 @@
 
 #include "Card.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <stdbool.h>
-
+/******************************************************************************************
+Features of cards:
+    1. Single card:
+        (1) Number: K (0), A (1), 2-10, Q (12), J (11, Chameleon)
+        (2) Color
+    2. Card stack:
+        (1) Data of each card;
+        (2) Top of the stack;
+        (3) Size of the stack
+Basical operations towards cards:
+    1. Initialize the cardstack and shuffle the cards;
+    2. Transfer the number of the card into different points;
+    3. Judge the status of the stack:
+        (1) Full;
+        (2)Empty.
+    4. Display the card in each player's hand;
+***********************************************************************************************/
 /************************************************************************
  Judge the state of the cardstack:
     1. Whether the cardstack is empty;
@@ -80,24 +93,29 @@ Cardstack *Cardstack_init()                         //Operation 3: Initialize th
 *************************************************************************/
 void display_card(Card *card)
 {
-    switch(card->c)
-    {
-        case spade:printf("Spade ");break;
-        case club:printf("Club ");break;
-        case diamond:printf("Diamond ");break;
-        case heart:printf("Heart ");break;
-        default:break;
-    }
-    if(card->number >=2 && card->number <= 10)
-        printf("%d", card->number);
-    else if(card->number == 0)
-        printf("K");
-    else if(card->number == 1)
-        printf("A");
-    else if(card->number == 12)
-        printf("Q");
+    if(card == NULL)
+        printf("");
     else
-        printf("J");
+    {
+        switch(card->c)
+        {
+            case spade:printf("Spade ");break;
+            case club:printf("Club ");break;
+            case diamond:printf("Diamond ");break;
+            case heart:printf("Heart ");break;
+            default:break;
+        }
+        if(card->number >=2 && card->number <= 10)
+            printf("%d", card->number);
+        else if(card->number == 0)
+            printf("K");
+        else if(card->number == 1)
+            printf("A");
+        else if(card->number == 12)
+            printf("Q");
+        else
+            printf("J");
+    }
 }
 
 /************************************************************************
@@ -116,8 +134,8 @@ int get_point(Card *card)
 ************************************************************************************/
 void destruct_cardstack(Cardstack *cardstack)
 {
-    free(cardstack);
     int i;
     for(i = 0; i < cardstack_size; i++)
         free(cardstack->cards[i]);
+    free(cardstack);
 }

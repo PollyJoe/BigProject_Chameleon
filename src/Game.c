@@ -6,3 +6,42 @@
 //
 
 #include "Game.h"
+/***********************************************************************************************
+ Process of one game :
+    1. Dealing the card: After dealing, there should be 4 cards in each player's hand
+    2. Game begins:
+        (1) Player 1 take one card from the stack, choose a card and play;
+        (2) Other players take turns to play a card if available;
+        (3) Once the stack is full, game over and record the score.
+    3. Status of the game:
+        (1) Normal valid play:
+            Same color.
+        (2) Chameleon: change the color to any other one
+            1) Same number;
+            2) Play "J".
+        (3) Discard: No card to play or choose to discard deliberately
+            Give the point of the discarded card to his counterpart.
+        (4) Foul: any play not included in what was mentioned above.
+**************************************************************************************************/
+void deal(Cardstack *cardstack, Players *players)
+{
+    for(int i = 0; i < max_player * (max_card_inhand-1); i++)
+        players->player[i % max_player]->card_inhand[i / max_player] = pop(cardstack);
+}
+
+bool ifValid(Card *card, Current *current)
+{
+    return ((card->number == current->current_num) || (card->c == current->current_color) || (card->c == chameleon));
+}
+
+void check_valid(bool (*ifValid)(Card *card, Current *current), Player *player,  Current *current)
+{
+    int i;
+    for(i = 0; i < max_card_inhand; i++)
+    {
+        if(player->card_inhand[i] == NULL)
+            player->valid[i] = false;
+        else
+            player->valid[i] = ifValid(player->card_inhand[i], current);
+    }
+}

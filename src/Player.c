@@ -7,9 +7,22 @@
 
 #include "Player.h"
 #include "Card.h"
-#include <stdio.h>
-#include <stdlib.h>
-
+/***************************************************************************************
+ Features of players:
+    1. One player:
+        (1) Score;
+        (2) Cards in hand
+    2. A group of players:
+        (1) Players
+ Basical operations of players:
+    1. Calculate and update the score;
+    2. Display the card in hand;
+    3. Display the score of each player;
+    4. Display the players;
+ What can players do:
+    1. Take a card from the stack;
+    2. Give a card;
+*****************************************************************************************/
 /********************************************************************************************
  Basical operations upon players:
     1. Initialize the players
