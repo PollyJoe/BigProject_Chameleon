@@ -30,7 +30,7 @@
     3. Display information of one player; (p.s. In EVP mode, only human player's info will be displayed during the game)
     4. Display information of all the players (p.s. Only used in PVP mode)
 **********************************************************************************************/
-Players *Players_init()                                                 //Initialize the players
+Players *Players_init(void)                                                 //Initialize the players
 {
     Players *players = (Players*)malloc(sizeof(Players));
     //Initialize each player
@@ -90,4 +90,12 @@ Card *givecard(Player *player, int position)                            //Give a
     player->card_inhand[position] = NULL;
     player->null_slot = position;
     return card;
+}
+
+void Destruct_players(Players *players)
+{
+    int i;
+    for(i = 0; i < max_player; i++)
+        free(players->player[i]);
+    free(players);
 }
