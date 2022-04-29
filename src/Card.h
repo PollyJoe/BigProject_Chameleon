@@ -51,7 +51,7 @@ void push(Card *card, Cardstack *cardstack);                        //Operation 
 Card *pop(Cardstack *cardstack);                                    //Operation 2: Take the card from the stack
 
 void swap(Card *a, Card *b);                                        //Swap two cards
-Cardstack *Cardstack_init();                                        //Operation 3: Initialize the stack and shuffle
+Cardstack *Cardstack_init(void);                                        //Operation 3: Initialize the stack and shuffle
 void display_card(Card *card);
 void display_cardstack(Cardstack *cardstack);
 int get_point(Card *card);

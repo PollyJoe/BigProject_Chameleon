@@ -9,8 +9,9 @@
 #define Display_interface_h
 
 #include <stdio.h>
-
-void Display_welcome();
-
+//Display the welcome interface
+void Display_welcome(void);
+//Display the exit-game interface
+void Display_Exit(void);
 
 #endif /* Display_interface_h */

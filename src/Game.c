@@ -28,7 +28,7 @@
  ***************************************************************************************************/
 void deal(Cardstack *cardstack, Players *players)
 {
-    for(int i = 0; i < max_player * (max_card_inhand-1); i++)
+    for(int i = 0; i < max_player * (max_card_inhand); i++)
         players->player[i % max_player]->card_inhand[i / max_player] = pop(cardstack);
 }
 
@@ -48,22 +48,75 @@ void check_valid(bool (*ifValid)(Card *card, Current *current), Player *player, 
             player->valid[i] = ifValid(player->card_inhand[i], current);
     }
 }
-/**********************************************************************************************************************
- Give a strategy to select the number of card to be played (only for computer player):
-    1. If have Chameleon, play it first;
-    2. If no Chameleon:
-        (1) Play the card with the largest
-    
- ***********************************************************************************************************************/
-int select_card(bool (*ifValid)(Card *card, Current *current), Player *player, bool *ifgiveup)
+
+bool ifChame(Card *card, Current *current)
 {
-    //Initialize the choice
+    return ((card->number == 11) || (card->number == current->current_num));
+}
+
+void check_chame(bool (*ifChame)(Card *card, Current *current), Player *player, Current *current)
+{
+    int i;
+    for(i = 0; i < max_card_inhand; i++)
+    {
+        if(ifChame(player->card_inhand[i], current))
+            player->chame[i] = true;
+    }
+}
+
+/******************************************
+ Strategies for AI playing
+    1. Card selection
+    2. Color selection
+ ******************************************/
+/******************************************************************************************************************
+ Card selection:
+ Give a strategy to select the number of card to be played (only for computer player):
+    1. If have the same color, play the largest;
+    2. If no same color, find chameleon;
+    3. If none of the two mentioned above is available, give up.
+ p.s. Both the playing and giving up selection are done in the same function
+ *******************************************************************************************************************/
+
+int select_card(bool (*ifValid)(Card *card, Current *current), Player *player, Current *current, bool *nogiveup)
+{
+    //Initialize the choice and check the attribute of each card
     int choice_index = -1;
-    *ifgiveup = false;
-    
-    return 1;
+    *nogiveup = false;
+    check_valid(ifValid, player, current);
+    check_chame(ifChame, player, current);
+    //Select the card: validity -> same color ->chameleon
+    int i, chame = -1;
+    for(i = 0; i < max_card_inhand; i++)
+    {
+        if(player->valid[i])
+        {
+            *nogiveup = true;
+            //If there is a non-chame card to play, choose this card first
+            if(player->card_inhand[i]->c == current->current_color && i > choice_index)  choice_index = i;
+            //If it is a chame card, we choose to go on first, and record the number of chame card in case we need it in this turn
+            else {chame = i; continue;}
+        }
+        else
+            continue;
+    }
+    //If there's only chameleon able to play, then play it
+    if(*nogiveup){ if(choice_index == -1) choice_index = chame; }
+    //If we have to give up, play the smallest card
+    else
+    {
+        choice_index = 0;
+        int j = 0;
+        while(j < max_card_inhand - 1)
+        {
+            j++;
+            if(player->card_inhand[j]->number < player->card_inhand[j - 1]->number) choice_index = j;
+        }
+    }
+    return choice_index;
 }
 
 
 
 
+ 

@@ -67,7 +67,7 @@ void swap(Card *a, Card *b)                         //Swap two cards
     temp = *a; *a = *b; *b = temp;
 }
 
-Cardstack *Cardstack_init()                         //Operation 3: Initialize the stack and shuffle
+Cardstack *Cardstack_init(void)                         //Operation 3: Initialize the stack and shuffle
 {
     Cardstack *cardstack;
     cardstack = (Cardstack*)malloc(sizeof(Cardstack));

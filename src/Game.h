@@ -37,9 +37,17 @@ typedef struct
     int current_num;
 } Current;
 
-typedef enum { chame, invalid, valid, discard  } State;
 
-void deal(Cardstack *cardstack, Players *players);                                                  //Deal the cards
-bool ifValid(Card *card, Current *current);                                                         //Judge whether the cards in players' hands are able to be played
-void check_valid(bool (*ifValid)(Card *card, Current *current), Player *player,  Current *current); //Change the validity of each players' cards
+//Deal the cards
+void deal(Cardstack *cardstack, Players *players);
+//Judge whether the cards in players' hands are able to be played
+bool ifValid(Card *card, Current *current);
+//Change the validity of each players' cards
+void check_valid(bool (*ifValid)(Card *card, Current *current), Player *player,  Current *current);
+//Judge whether it is a chameleon
+bool ifChame(Card *card, Current *current);
+//Change the color of chameleon card into chameleon
+void check_chame(bool (*ifChame)(Card *card, Current *current), Player *player, Current *current);
+//Select the card
+int select_card(bool (*ifValid)(Card *card, Current *current), Player *player, Current *current, bool *nogiveup);
 #endif /* Game_h */
