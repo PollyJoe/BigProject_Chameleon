@@ -24,7 +24,7 @@ Basical operations towards cards:
         (2)Empty.
     4. Display the card in each player's hand;
 ***********************************************************************************************/
-/************************************************************************
+/**************************************************************************
  Judge the state of the cardstack:
     1. Whether the cardstack is empty;
     2. Whether the cardstack is full;
@@ -78,7 +78,7 @@ Cardstack *Cardstack_init()                         //Operation 3: Initialize th
     {
         cardstack->cards[i] = (Card*)malloc(sizeof(Card));
         cardstack->cards[i]->number = i % set_size;
-        cardstack->cards[i]->c = i % color_num;
+        cardstack->cards[i]->c = (Color)i % color_num;
         cardstack->top++;
     }
     //Shuffle
@@ -115,6 +115,15 @@ void display_card(Card *card)
             printf("Q");
         else
             printf("J");
+    }
+}
+void display_cardstack(Cardstack *cardstack)
+{
+    int i;
+    for(i = 0; i < cardstack_size; i++)
+    {
+        display_card(cardstack->cards[i]);
+        printf("\n");
     }
 }
 

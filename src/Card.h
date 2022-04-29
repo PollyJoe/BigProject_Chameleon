@@ -53,6 +53,7 @@ Card *pop(Cardstack *cardstack);                                    //Operation 
 void swap(Card *a, Card *b);                                        //Swap two cards
 Cardstack *Cardstack_init();                                        //Operation 3: Initialize the stack and shuffle
 void display_card(Card *card);
+void display_cardstack(Cardstack *cardstack);
 int get_point(Card *card);
 void destruct_cardstack(Cardstack *cardstack);                      //Destruct the stack
 #endif /* Card_h */

@@ -11,7 +11,7 @@
     1. Dealing the card: After dealing, there should be 4 cards in each player's hand
     2. Game begins:
         (1) Player 1 take one card from the stack, choose a card and play;
-        (2) Other players take turns to play a card if available;
+        (2) Other players take turns to play a card if this card is available;
         (3) Once the stack is full, game over and record the score.
     3. Status of the game:
         (1) Normal valid play:
@@ -23,6 +23,9 @@
             Give the point of the discarded card to his counterpart.
         (4) Foul: any play not included in what was mentioned above.
 **************************************************************************************************/
+/***************************************************************************************************
+ Deal the card and check whether the card is valid in this turn
+ ***************************************************************************************************/
 void deal(Cardstack *cardstack, Players *players)
 {
     for(int i = 0; i < max_player * (max_card_inhand-1); i++)
@@ -45,3 +48,22 @@ void check_valid(bool (*ifValid)(Card *card, Current *current), Player *player, 
             player->valid[i] = ifValid(player->card_inhand[i], current);
     }
 }
+/**********************************************************************************************************************
+ Give a strategy to select the number of card to be played (only for computer player):
+    1. If have Chameleon, play it first;
+    2. If no Chameleon:
+        (1) Play the card with the largest
+    
+ ***********************************************************************************************************************/
+int select_card(bool (*ifValid)(Card *card, Current *current), Player *player, bool *ifgiveup)
+{
+    //Initialize the choice
+    int choice_index = -1;
+    *ifgiveup = false;
+    
+    return 1;
+}
+
+
+
+

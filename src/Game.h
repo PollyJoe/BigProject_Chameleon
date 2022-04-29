@@ -39,5 +39,7 @@ typedef struct
 
 typedef enum { chame, invalid, valid, discard  } State;
 
-
+void deal(Cardstack *cardstack, Players *players);                                                  //Deal the cards
+bool ifValid(Card *card, Current *current);                                                         //Judge whether the cards in players' hands are able to be played
+void check_valid(bool (*ifValid)(Card *card, Current *current), Player *player,  Current *current); //Change the validity of each players' cards
 #endif /* Game_h */
