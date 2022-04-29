@@ -16,4 +16,11 @@ typedef struct
     int current_num;
 } Current;
 
+//Change the assigned color
+void change_color(Current *current, Color c);
+//Change the assigned number
+void change_num(Current *current, int num);
+//Desturct the current color and number
+void destruct_current(Current *current);
+
 #endif /* Current_h */

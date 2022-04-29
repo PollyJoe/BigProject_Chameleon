@@ -44,12 +44,19 @@ typedef struct                                                  //Set a type to 
     Player *player[max_player];
 } Players;
 
+//Initialize the players
+Players *Players_init(void);
+//Update the score
+void Update_Score(Player *player, Card *discard);
+//Display information of one player
+void Display_Player(Player *player);
+//Display the information of all the players
+void Display_Players(Players *players);
+//Take a card from the cardstack
+void takecard(Player *player, Cardstack *cardstack);
+//Give a card
+Card *givecard(Player *player, int position);
+//Destruct players
+void Destruct_players(Players *players);
 
-Players *Players_init(void);                                        //Initialize the players
-void Update_Score(Player *player, Card *discard);               //Update the score
-void Display_Player(Player *player);                            //Display information of one player
-void Display_Players(Players *players);                         //Display the information of all the players
-void takecard(Player *player, Cardstack *cardstack);            //Take a card from the cardstack
-Card *givecard(Player *player, int position);                   //Give a card
-void Destruct_players(Players *players);                        //Destruct players
 #endif /* Player_h */

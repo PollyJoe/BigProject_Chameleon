@@ -22,10 +22,9 @@
         (3) Discard: No card to play or choose to discard deliberately
             Give the point of the discarded card to his counterpart.
         (4) Foul: any play not included in what was mentioned above.
-**************************************************************************************************/
-/***************************************************************************************************
+***************************************************************************************************
  Deal the card and check whether the card is valid in this turn
- ***************************************************************************************************/
+***************************************************************************************************/
 void deal(Cardstack *cardstack, Players *players)
 {
     for(int i = 0; i < max_player * (max_card_inhand); i++)
@@ -64,12 +63,11 @@ void check_chame(bool (*ifChame)(Card *card, Current *current), Player *player, 
     }
 }
 
-/******************************************
+/******************************************************************************************************************
  Strategies for AI playing
     1. Card selection
     2. Color selection
- ******************************************/
-/******************************************************************************************************************
+*********************************************************************************************************************
  Card selection:
  Give a strategy to select the number of card to be played (only for computer player):
     1. If have the same color, play the largest;

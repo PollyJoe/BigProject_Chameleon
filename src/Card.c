@@ -8,7 +8,7 @@
 #include "Card.h"
 #include <stdio.h>
 /******************************************************************************************
-Features of cards:
+ Features of cards:
     1. Single card:
         (1) Number: K (0), A (1), 2-10, Q (12), J (11, Chameleon)
         (2) Color
@@ -16,19 +16,18 @@ Features of cards:
         (1) Data of each card;
         (2) Top of the stack;
         (3) Size of the stack
-Basical operations towards cards:
+ Basical operations towards cards:
     1. Initialize the cardstack and shuffle the cards;
     2. Transfer the number of the card into different points;
     3. Judge the status of the stack:
         (1) Full;
         (2)Empty.
     4. Display the card in each player's hand;
-***********************************************************************************************/
-/**************************************************************************
+***********************************************************************************************
  Judge the state of the cardstack:
     1. Whether the cardstack is empty;
     2. Whether the cardstack is full;
-***************************************************************************/
+***********************************************************************************************/
 bool ifEmpty(Cardstack *cardstack)                  //Judge whether the stack is empty
 {
     return (cardstack->top == -1) ? true : false;

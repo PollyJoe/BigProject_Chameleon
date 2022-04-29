@@ -45,15 +45,24 @@ typedef struct
     int top;
 } Cardstack;
 
-bool ifEmpty(Cardstack *cardstack);                                 //Judge whether the stack is empty
-bool ifFull(Cardstack *cardstack);                                  //Judge whether the stack is full
-void push(Card *card, Cardstack *cardstack);                        //Operation 1: Put the card into the stack
-Card *pop(Cardstack *cardstack);                                    //Operation 2: Take the card from the stack
-
-void swap(Card *a, Card *b);                                        //Swap two cards
-Cardstack *Cardstack_init(void);                                        //Operation 3: Initialize the stack and shuffle
+//Judge whether the stack is empty
+bool ifEmpty(Cardstack *cardstack);
+//Judge whether the stack is full
+bool ifFull(Cardstack *cardstack);
+//Put the card into the stack
+void push(Card *card, Cardstack *cardstack);
+//Take the card from the stack
+Card *pop(Cardstack *cardstack);
+//Swap two cards
+void swap(Card *a, Card *b);
+//Initialize the stack and shuffle
+Cardstack *Cardstack_init(void);
+//Display info of one card
 void display_card(Card *card);
+//Display info of the whole cardstack
 void display_cardstack(Cardstack *cardstack);
+//Get the point of each card
 int get_point(Card *card);
-void destruct_cardstack(Cardstack *cardstack);                      //Destruct the stack
+//Destruct the stack
+void destruct_cardstack(Cardstack *cardstack);
 #endif /* Card_h */
