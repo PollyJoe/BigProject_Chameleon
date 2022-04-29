@@ -10,6 +10,7 @@
 
 #include "Card.h"
 #include "Player.h"
+#include "Current.h"
 
 /***********************************************************************************************
  Process of one game :
@@ -31,11 +32,6 @@
     1. Current color of one card
     2. Current number of the card
 **********************************************************************************************/
-typedef struct
-{
-    Color current_color;
-    int current_num;
-} Current;
 
 
 //Deal the cards

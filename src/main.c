@@ -9,15 +9,15 @@
 int main()
 {
     //Print the welcome interface for command line mode
-    Display_welcome();
+    ////Display_welcome();
     
-    Cardstack *cardstack = Cardstack_init();
     //Debug the game
+    Cardstack *cardstack = Cardstack_init();
     Players *players = Players_init();
     Current *current;
     current = (Current*)malloc(sizeof(Current));
     current->current_color = spade;
-    current->current_num = 8;
+    current->current_num = 10;
     bool nogiveup;
     Card *play[2];
     for(int i = 0; i < 2; i++)
@@ -33,6 +33,6 @@ int main()
         printf("\n");
     }
     Display_Players(players);
-    Display_Exit();
+    ////Display_Exit();
     return 0;
 }

@@ -77,7 +77,6 @@ void check_chame(bool (*ifChame)(Card *card, Current *current), Player *player, 
     3. If none of the two mentioned above is available, give up.
  p.s. Both the playing and giving up selection are done in the same function
  *******************************************************************************************************************/
-
 int select_card(bool (*ifValid)(Card *card, Current *current), Player *player, Current *current, bool *nogiveup)
 {
     //Initialize the choice and check the attribute of each card
@@ -116,6 +115,9 @@ int select_card(bool (*ifValid)(Card *card, Current *current), Player *player, C
     return choice_index;
 }
 
+/*********************************************************************************************************
+ 
+ *********************************************************************************************************/
 
 
 
