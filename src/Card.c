@@ -133,7 +133,6 @@ int get_point(Card *card)
 {
     int point = 0;
     if(card->number != 11) point = card->number;
-    else printf("This is a Chameleon!\n");
     return point;
 }
 

@@ -33,7 +33,7 @@ void deal(Cardstack *cardstack, Players *players)
 
 bool ifValid(Card *card, Current *current)
 {
-    return ((card->number == current->current_num) || (card->c == current->current_color) || (card->c == chameleon));
+    return ((card->number == current->current_num) || (card->c == current->current_color) || (card->number == 11));
 }
 
 void check_valid(bool (*ifValid)(Card *card, Current *current), Player *player,  Current *current)
@@ -75,7 +75,7 @@ void check_chame(bool (*ifChame)(Card *card, Current *current), Player *player, 
     3. If none of the two mentioned above is available, give up.
  p.s. Both the playing and giving up selection are done in the same function
  *******************************************************************************************************************/
-int select_card(bool (*ifValid)(Card *card, Current *current), Player *player, Current *current, bool *nogiveup)
+int select_card(bool (*ifValid)(Card *card, Current *current), bool (*ifChame)(Card *card, Current *current), Player *player, Current *current, bool *nogiveup)
 {
     //Initialize the choice and check the attribute of each card
     int choice_index = -1;
@@ -83,14 +83,16 @@ int select_card(bool (*ifValid)(Card *card, Current *current), Player *player, C
     check_valid(ifValid, player, current);
     check_chame(ifChame, player, current);
     //Select the card: validity -> same color ->chameleon
-    int i, chame = -1;
+    int i, j, chame = -1;
     for(i = 0; i < max_card_inhand; i++)
     {
         if(player->valid[i])
         {
             *nogiveup = true;
+            int flag = 1;
+            for(j = 0; j < i; j++) if(get_point(player->card_inhand[i]) < get_point(player->card_inhand[j])) flag = 0;
             //If there is a non-chame card to play, choose this card first
-            if(player->card_inhand[i]->c == current->current_color && i > choice_index)  choice_index = i;
+            if(!(player->chame[i]) && flag)  choice_index = i;
             //If it is a chame card, we choose to go on first, and record the number of chame card in case we need it in this turn
             else {chame = i; continue;}
         }
@@ -107,16 +109,32 @@ int select_card(bool (*ifValid)(Card *card, Current *current), Player *player, C
         while(j < max_card_inhand - 1)
         {
             j++;
-            if(player->card_inhand[j]->number < player->card_inhand[j - 1]->number) choice_index = j;
+            if(get_point(player->card_inhand[j]) < get_point(player->card_inhand[choice_index])) choice_index = j;
         }
     }
     return choice_index;
 }
 
-/*********************************************************************************************************
- 
- *********************************************************************************************************/
+Color select_color(){srand((unsigned int)time(NULL)); Color c = rand()%color_num; return c;}
 
+/*********************************************************************************************************
+ Game begins:
+    1. In one turn, if players play, change the color and number instantly;
+    2. If there is a player giving up, record the point of the card, allocate the total point to each player that doesn't give up
+    3. If there is a chameleon played, change the color only
+ *********************************************************************************************************/
+int check_play(Card *cardgiven, bool nogiveup, Current *current, bool (*ifValid)(Card *card, Current *current))
+{
+    int point = 0;
+    if(nogiveup)
+    {
+        if(ifChame(cardgiven, current)) change_color(current, select_color());
+        else change_color(current, cardgiven->c);
+        change_num(current, cardgiven->number);
+    }
+    else point += get_point(cardgiven);
+    return point;
+}
 
 
  

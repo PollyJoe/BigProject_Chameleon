@@ -47,9 +47,21 @@ Players *Players_init(void)                                                 //In
     return players;
 }
 
-void Update_Score(Player *player, Card *discard)                        //Update the score
+void Update_Score(Player *player, int point)                      //Update the score
 {
-    player->score += get_point(discard);
+    player->score += point;
+}
+
+void Update_Scores(Players *players, int point)
+{
+    int i;
+    for(i = 0; i < max_player; i++)
+    {
+        if((players->player[i]->nogiveup))
+        {
+            Update_Score(players->player[i], point);
+        }
+    }
 }
 
 void Display_Player(Player *player)                                     //Display information of one player
@@ -61,6 +73,8 @@ void Display_Player(Player *player)                                     //Displa
         display_card(player->card_inhand[i]);
         printf("\n");
     }
+    printf("Score: %d", player->score);
+    printf("\n\n");
 }
 
 void Display_Players(Players *players)                                  //Display the information of all the players

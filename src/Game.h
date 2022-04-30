@@ -45,5 +45,7 @@ bool ifChame(Card *card, Current *current);
 //Change the color of chameleon card into chameleon
 void check_chame(bool (*ifChame)(Card *card, Current *current), Player *player, Current *current);
 //Select the card
-int select_card(bool (*ifValid)(Card *card, Current *current), Player *player, Current *current, bool *nogiveup);
+int select_card(bool (*ifValid)(Card *card, Current *current), bool (*ifChame)(Card *card, Current *current), Player *player, Current *current, bool *nogiveup);
+//Check the state of each play
+int check_play(Card *cardgiven, bool ifgiveup, Current *current, bool (*ifValid)(Card *card, Current *current));
 #endif /* Game_h */
