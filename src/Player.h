@@ -61,5 +61,4 @@ void takecard(Player *player, Cardstack *cardstack);
 Card *givecard(Player *player, int position);
 //Destruct players
 void Destruct_players(Players *players);
-
 #endif /* Player_h */

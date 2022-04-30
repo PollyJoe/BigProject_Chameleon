@@ -13,5 +13,4 @@
 void Display_welcome(void);
 //Display the exit-game interface
 void Display_Exit(void);
-
 #endif /* Display_interface_h */

@@ -22,5 +22,6 @@ void change_color(Current *current, Color c);
 void change_num(Current *current, int num);
 //Desturct the current color and number
 void destruct_current(Current *current);
-
+//Display current status
+void Display_current(Current *current);
 #endif /* Current_h */
