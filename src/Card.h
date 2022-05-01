@@ -32,7 +32,7 @@ Basical operations towards cards:
 static const int cardstack_size = 52;                               //Size of the card heap
 static const int color_num = 4;                                     //Number of colors of a normal deck of poke
 static const int set_size = 13;                                     //A set of one color
-typedef enum { spade, club, diamond, heart, chameleon } Color;      //J is a chameleon
+typedef enum { spade, club, diamond, heart, chameleon} Color;      //J is a chameleon
 
 typedef struct
 {

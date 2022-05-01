@@ -51,6 +51,8 @@ Players *Players_init(void);
 void Update_Score(Player *player, int point);
 //Update the score for the whole group
 void Update_Scores(Players *players, int point);
+//Judge whether all the cards have been played
+bool ifHaveCard(Players *players);
 //Display information of one player
 void Display_Player(Player *player);
 //Display the information of all the players

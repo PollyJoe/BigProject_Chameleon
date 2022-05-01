@@ -70,7 +70,7 @@ Cardstack *Cardstack_init(void)                         //Operation 3: Initializ
 {
     Cardstack *cardstack;
     cardstack = (Cardstack*)malloc(sizeof(Cardstack));
-    cardstack->top = 0;
+    cardstack->top = -1;
     int i;
     //Initialize the cards
     for(i = 0; i < cardstack_size; i++)
@@ -131,8 +131,9 @@ void display_cardstack(Cardstack *cardstack)
 **************************************************************************/
 int get_point(Card *card)
 {
-    int point = 0;
-    if(card->number != 11) point = card->number;
+    int point;
+    if(card != NULL && card->number != 11) point = card->number;
+    else point = 0;
     return point;
 }
 

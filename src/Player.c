@@ -46,7 +46,21 @@ Players *Players_init(void)                                                 //In
     }
     return players;
 }
-
+/*
+bool ifHaveCard(Players *players)
+{
+    int i, j;
+    for(i = 0; i < max_player; i++)
+    {
+        for(j = 0; j < max_card_inhand; j++)
+        {
+            if(players->player[i]->card_inhand[j] != NULL) return true;
+            else continue;
+        }
+    }
+    return false;
+}
+*/
 void Update_Score(Player *player, int point)                      //Update the score
 {
     player->score += point;
