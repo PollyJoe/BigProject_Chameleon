@@ -14,5 +14,7 @@ int main()
     
     //Debug the game
     mach2machgame();
+    //Display_End();
+    Display_Exit();
     return 0;
 }

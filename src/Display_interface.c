@@ -21,7 +21,7 @@ void Display_welcome(void)
     printf("Start your game? <y/n> :\n");
 }
 
-void Display_Exit(void)
+void Display_End(void)
 {
     FILE *fp;char ch;
     fp = fopen("Ending.txt","r");
@@ -31,7 +31,16 @@ void Display_Exit(void)
         ch = fgetc(fp);
         while(ch != EOF){putchar(ch); ch = fgetc(fp);}
     }
-    printf("Exitting the game...\n");
 }
-
+void Display_Exit(void)
+{
+    FILE *fp1;char ch1;
+    fp1 = fopen("Exit.txt","r");
+    if(fp1 == NULL) printf("ERROR!");
+    else
+    {
+        ch1 = fgetc(fp1);
+        while(ch1 != EOF){putchar(ch1); ch1 = fgetc(fp1);}
+    }
+}
 

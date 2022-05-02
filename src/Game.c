@@ -189,8 +189,7 @@ void mach2machgame(void)
     while(!(ifEmpty(cardstack)))
     {
         turn++;
-        printf("************************************************\nturn %d\n", turn);
-        Display_Players(players);
+        printf("\nturn %d\n", turn);
         one_turn(players, cardstack, current, turn);
         Display_Players(players);
     }
@@ -200,8 +199,7 @@ void mach2machgame(void)
         turn++;
         int i;
         int point = 0;
-        printf("************************************************\nturn %d\n", turn);
-        Display_Players(players);
+        printf("\nturn %d\n", turn);
         for(i = 0; i < max_player; i++)
         {
             Display_current(current);
