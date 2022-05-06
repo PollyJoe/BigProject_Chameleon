@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/basic">
+        <file>resources/basic/chamaleon.jpeg</file>
+        <file>resources/basic/slogan.png</file>
+    </qresource>
+    <qresource prefix="/cards">
+        <file>resources/cards/spade2.png</file>
+        <file>resources/cards/spade3.png</file>
+        <file>resources/cards/spade4.png</file>
+        <file>resources/cards/spade5.png</file>
+        <file>resources/cards/spade6.png</file>
+        <file>resources/cards/spade7.png</file>
+        <file>resources/cards/spade8.png</file>
+        <file>resources/cards/spade9.png</file>
+        <file>resources/cards/spade10.png</file>
+        <file>resources/cards/spadeA.png</file>
+        <file>resources/cards/spadeJ.png</file>
+        <file>resources/cards/spadeK.png</file>
+        <file>resources/cards/spadeQ.png</file>
+    </qresource>
+</RCC>
