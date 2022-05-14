@@ -1,0 +1,63 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>Card/spade2.png</file>
+        <file>Card/spade3.png</file>
+        <file>Card/spade4.png</file>
+        <file>Card/spade5.png</file>
+        <file>Card/spade6.png</file>
+        <file>Card/spade7.png</file>
+        <file>Card/spade8.png</file>
+        <file>Card/spade9.png</file>
+        <file>Card/spade10.png</file>
+        <file>Card/spadeA.png</file>
+        <file>Card/spadeJ.png</file>
+        <file>Card/spadeK.png</file>
+        <file>Card/spadeQ.png</file>
+        <file>Card/club2.png</file>
+        <file>Card/club3.png</file>
+        <file>Card/club4.png</file>
+        <file>Card/club5.png</file>
+        <file>Card/club6.png</file>
+        <file>Card/club7.png</file>
+        <file>Card/club8.png</file>
+        <file>Card/club9.png</file>
+        <file>Card/club10.png</file>
+        <file>Card/clubA.png</file>
+        <file>Card/clubJ.png</file>
+        <file>Card/clubK.png</file>
+        <file>Card/clubQ.png</file>
+        <file>Card/diamond2.png</file>
+        <file>Card/diamond3.png</file>
+        <file>Card/diamond4.png</file>
+        <file>Card/diamond5.png</file>
+        <file>Card/diamond6.png</file>
+        <file>Card/diamond7.png</file>
+        <file>Card/diamond8.png</file>
+        <file>Card/diamond9.png</file>
+        <file>Card/diamond10.png</file>
+        <file>Card/diamondA.png</file>
+        <file>Card/diamondJ.png</file>
+        <file>Card/diamondK.png</file>
+        <file>Card/diamondQ.png</file>
+        <file>Card/heart2.png</file>
+        <file>Card/heart3.png</file>
+        <file>Card/heart4.png</file>
+        <file>Card/heart5.png</file>
+        <file>Card/heart6.png</file>
+        <file>Card/heart7.png</file>
+        <file>Card/heart8.png</file>
+        <file>Card/heart9.png</file>
+        <file>Card/heart10.png</file>
+        <file>Card/heartA.png</file>
+        <file>Card/heartJ.png</file>
+        <file>Card/heartK.png</file>
+        <file>Card/heartQ.png</file>
+    </qresource>
+    <qresource prefix="/interface">
+        <file>Interface/Welcome_img.png</file>
+        <file>Interface/tableboard.png</file>
+    </qresource>
+    <qresource prefix="/icon">
+        <file>icon/back.png</file>
+    </qresource>
+</RCC>
