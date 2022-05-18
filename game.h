@@ -24,11 +24,14 @@
 
 class Game : public Tableboard
 {
+
+
 public:
     //init part
     Game();
     friend class mode;
     friend class MainWindow;
+
     void deal();
 
     //play part
@@ -44,18 +47,25 @@ public:
     void CheckChame(bool (*chame_rule)(const Card& card, Game *g), Player& player);
 
     //Don't distinct play and discard
+    void check_all_card(int player_index);
     int select_card(bool (*valid_rule)(const Card& card, Game *g), bool (*chame_rule)(const Card& card, Game *g), int player_index);
 
     void check_play(int player_index, Card& cardgiven);
     Color select_color(){return static_cast<Color>(arc4random() % colornum);}
 
+
     //Change the current color and number
     void change_color(Color c){current_color = c;}
     void change_number(int num){current_num = num;}
     //Game
+    void play_once(int player_index);
     void play_a_turn(int turn);
+    void human_play_once();
+    void human_play_a_turn(int turn);
     void update_playercard(int player_index);
 
+    void mach_vs_mach();
+    void human_vs_mach();
 
 
 
@@ -65,10 +75,10 @@ private:
     //Using display function in tableboard class
     Color current_color;
     int current_num;
-
+    //Tableboard *table = new Tableboard;
 };
 
 bool valid_rule(const Card& card, Game *g);
 bool chame_rule(const Card& card, Game *g);
-void delay();
+void delay(int time);
 #endif // GAME_H

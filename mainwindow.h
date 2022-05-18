@@ -30,8 +30,7 @@ private:
     Ui::MainWindow *ui;
     help *help_menu = new help;
     mode *playmode = new mode;
-
-
+    Tableboard *table = new Tableboard;
 };
 
 

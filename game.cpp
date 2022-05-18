@@ -20,8 +20,16 @@
  *  2. Play:
  *      (1) Give a card
  *          1) Check the calidity
- *          2) Choose a card due to the strategy
- *      (2) Take a card
+ *          2) Choose a card due to the strategy/Human choose one card to play
+ *      (2) Check the result of each turn
+ *      (3) Take a card and start a new turn
+************************************************************/
+
+/************************************************************
+ * Part I  Preparation for a new game
+ * 1. Constructor
+ * 2. Deal the card
+ * 3. Update the cards
 ************************************************************/
 Game::Game(){
     stack_init(cardstack);
@@ -39,12 +47,22 @@ void Game::deal(){
     }
 }
 
+void Game::update_playercard(int player_index){
+    int i;
+    for(i = 0; i < players[player_index].cards_inhand.size(); i++)
+        update_cards(player_index, i, players[player_index].cards_inhand[i]);
+    turn_down_cards(player_index, players[player_index].cards_inhand.size());
+}
+/*************************************************************
+ * Part II  Basic play of the game
+ * 1. Give a card
+ * 2. Get a card from the stack
+*************************************************************/
 Card Game::givecard(int player_index, int position){
     players[player_index].null_slot = position;
     Card givecard = players[player_index].cards_inhand[position];
     players[player_index].cards_inhand.erase(players[player_index].cards_inhand.begin() + position);
     turn_down_cards(player_index, position);
-
     return givecard;
 }
 
@@ -54,6 +72,12 @@ void Game::getcard(int player_index){
     cardstack.pop();
 }
 
+/***************************************************************
+ * Part III  Background pre-game process of each play
+ * 1. Check whether the cards in hand are valid
+ * 2. Check whether the cards in hand are chameleon card
+ * 1 & 2 combine to one function (check_of_all_card)
+***************************************************************/
 void Game::CheckValid(bool (*valid_rule)(const Card& card, Game *g), Player& player){
     for(auto &c : player.cards_inhand) c.SetValid(valid_rule(c, this));
 }
@@ -62,18 +86,22 @@ void Game::CheckChame(bool (*chame_rule)(const Card& card, Game *g), Player& pla
     for(auto &c : player.cards_inhand) c.SetChame(chame_rule(c, this));
 }
 
-//Edit this later
+void Game::check_all_card(int player_index){
+    CheckValid(valid_rule, players[player_index]);
+    CheckChame(chame_rule, players[player_index]);
+}
+
+/****************************************************************
+ * Part IV  (Only for machine-play or trustseeship) a simple AI to choose the card
+****************************************************************/
 int Game::select_card(bool valid_rule(const Card& card, Game *g), bool (*chame_rule)(const Card& card, Game *g), int player_index){
    int index = -1;
    int chame = 0;
-   int i = -1;//Record the card when using for-loop
-
+   int i = -1;
    players[player_index].ifgiveup = true;
-   CheckValid(valid_rule, players[player_index]);
-   CheckChame(chame_rule, players[player_index]);
+   check_all_card(player_index);
    for(auto &c : players[player_index].cards_inhand){
        i++;
-       //Chame-play or non-Chame-play
        if(c.GetValid()){
            bool iflarger = true;
            players[player_index].ifgiveup = false;
@@ -109,9 +137,12 @@ int Game::select_card(bool valid_rule(const Card& card, Game *g), bool (*chame_r
    return index;
 }
 
+/**************************************************************
+ * Part V  Background judgement of each play
+**************************************************************/
 void Game::check_play(int player_index, Card& cardgiven){
     update_playcard(cardgiven);
-    if(players[player_index].ifgiveup){
+    if(players[player_index].ifgiveup || !cardgiven.GetValid()){
         players[(player_index + 1) % 2].UpdateScore(cardgiven);
     }
     else{
@@ -122,35 +153,107 @@ void Game::check_play(int player_index, Card& cardgiven){
     }
     for(int i = 0; i < player_num; i++) update_score(i, players[i].score);
 }
+/***************************************************************
+ * Part VI  Game module
+ * 1. One play from one player
+ * 2. A total turn (2 plays, for mach-mach game and trustseeship)
+ * 3. Update the card
+***************************************************************/
+void Game::play_once(int player_index){
+    int index = select_card(valid_rule, chame_rule, player_index);
+    Card cardgiven = givecard(player_index, index);
+    update_playercard(player_index);
+    check_play(player_index, cardgiven);
+    delay(1);
+}
 
 void Game::play_a_turn(int turn){
     for(int i = 0; i < player_num; i++){
         if(!cardstack.empty()) getcard(i);
-        delay();
+        delay(1);
     }
     for(int i = 0; i < player_num; i++){
         update_turn(turn);
-        int index = select_card(valid_rule, chame_rule, i);
-        Card cardgiven = givecard(i, index);
-        update_playercard(i);
-        check_play(i, cardgiven);
-        delay();
+        play_once(i);
+        delay(1);
     }
 }
 
-void Game::update_playercard(int player_index){
-    int i;
-    for(i = 0; i < players[player_index].cards_inhand.size(); i++){
-        update_cards(player_index, i, players[player_index].cards_inhand[i]);
+void Game::human_play_once(){
+    init_ifhumanplay();
+    check_all_card(get_human_player_index());
+    Card cardgiven = givecard(get_human_player_index(), get_human_play_card());
+    update_playercard(get_human_player_index());
+    check_play(get_human_player_index(), cardgiven);
+}
+
+void Game::human_play_a_turn(int turn){
+    for(int i = 0; i < player_num; i++){
+        if(!cardstack.empty()) getcard(i);
+        delay(1);
     }
-    turn_down_cards(player_index, players[player_index].cards_inhand.size());
+    for(int i = 0; i < player_num; i++)
+        check_all_card(i);
+
+    delay(3);
+    update_turn(turn);
+    if(get_ifhumanplay()) human_play_once();
+    else play_once(1);
+    delay(2);
+    play_once(0);
+    delay(1);
+}
+
+
+
+
+void Game::mach_vs_mach(){
+    int turn = 1;
+    show();
+    delay(1);
+    deal();
+    delay(1);
+    update_current(current_color, current_num);
+    delay(1);
+    while(!cardstack.empty()){
+        play_a_turn(turn++);
+        delay(1);
+    }
+    while(!players[1].cards_inhand.empty()){
+        play_a_turn(turn++);
+        delay(1);
+    }
+}
+
+void Game::human_vs_mach(){
+    int turn = 1;
+    show();
+    delay(1);
+    deal();
+    delay(1);
+    update_current(current_color, current_num);
+    delay(1);
+    while(!cardstack.empty()){
+        human_play_a_turn(turn++);
+    }
+    while(!players[1].cards_inhand.empty()){
+        human_play_a_turn(turn++);
+    }
 }
 
 
 
 
 
-//rule part
+
+
+
+
+
+
+/********************************************************************
+ * Rule part, outside the class
+********************************************************************/
 bool valid_rule(const Card& card, Game *g){
     return (card.GetColor() == g->current_color) || (card.GetNumber() == g->current_num) || (card.GetNumber() == 11);
 }
@@ -159,9 +262,8 @@ bool chame_rule(const Card& card, Game *g){
     return (card.GetNumber() == 11) || (card.GetNumber() == g->current_num);
 }
 
-void delay()
-{
-    QTime dieTime= QTime::currentTime().addSecs(1);
+void delay(int time){
+    QTime dieTime= QTime::currentTime().addSecs(time);
     while (QTime::currentTime() < dieTime)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }

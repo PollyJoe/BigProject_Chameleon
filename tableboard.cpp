@@ -7,6 +7,8 @@ Tableboard::Tableboard(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    //Put the objects into the vector
+    //cards
     player1_cards_button.append(ui->cards_button_1_1);
     player1_cards_button.append(ui->cards_button_1_2);
     player1_cards_button.append(ui->cards_button_1_3);
@@ -19,64 +21,43 @@ Tableboard::Tableboard(QWidget *parent) :
     player2_cards_button.append(ui->cards_button_2_5);
     player_cards_button.append(player1_cards_button);
     player_cards_button.append(player2_cards_button);
-
+    //players
     players_label.append(ui->player1);
     players_label.append(ui->player2);
-
+    //score
     score_label.append(ui->score_1);
     score_label.append(ui->score_2);
     ui->score_1->setText("0");
-    ui->score_2->setText("0");
+    ui->score_2->setText("0");   
+
+    ui->goback->hide();
+    QObject::connect(this, SIGNAL(play(int,int)), this, SLOT(human_play_slot(int,int)));
 }
 
-Tableboard::~Tableboard()
-{
+Tableboard::~Tableboard(){
     delete ui;
 }
 
-void Tableboard::update_cards(int player_index, int card_index, const Card& card){
-    QString s1, s2;
-    s1 = color_of_card(card.GetColor());
-    s2 = number_of_card(card.GetNumber());
-
-
-
-    player_cards_button[player_index][card_index]->setIcon(QIcon(":/image/Card/" + s1 + s2 + ".png"));
-    player_cards_button[player_index][card_index]->setIconSize(QSize(58, 90));
-    player_cards_button[player_index][card_index]->show();
-
+/*************************************************
+ * APIs to get private members of Tableboard
+*************************************************/
+void Tableboard::init_ifhumanplay(){
+    ifhumanplay = false;
 }
 
-void Tableboard::turn_down_cards(int player_index, int card_index){
-    player_cards_button[player_index][card_index]->hide();
+int Tableboard::get_human_player_index(){
+    return human_player_index;
+}
+int Tableboard::get_human_play_card(){
+    return human_play_card;
+}
+bool Tableboard::get_ifhumanplay(){
+    return ifhumanplay;
 }
 
-void Tableboard::update_current(Color c, int num){
-    QString s1,s2;
-    s1 = color_of_card(c);
-    s2 = number_of_card(num);
-    ui->current->setPixmap(QPixmap(":/image/Card/" + s1 + s2 + ".png"));
-}
-
-void Tableboard::update_score(int player_index, int score){
-    score_label[player_index]->setText(QString::number(score));
-}
-
-void Tableboard::update_playcard(Card &card){
-    QString s1,s2;
-    s1 = color_of_card(card.GetColor());
-    s2 = number_of_card(card.GetNumber());
-    ui->playcard->setPixmap(QPixmap(":/image/Card/" + s1 + s2 + ".png"));
-}
-
-void Tableboard::update_turn(int turn){
-    ui->turn->setText("Turn: " + QString::number(turn));
-}
-
-
-
-
-
+/********************************************************
+ * Process the string to give the filename of the card
+********************************************************/
 QString color_of_card(Color c){
     QString s1;
     switch(c){
@@ -101,10 +82,77 @@ QString number_of_card(int num){
     return s2;
 }
 
+QString filename_of_card(Color c, int num){
+    QString s;
+    QString s1 = color_of_card(c);
+    QString s2 = number_of_card(num);
+    s = ":/image/Card/" + s1 + s2 + ".png";
+    return s;
+}
+/*********************************************************************
+ * Functional module: provide the GUI intersurface
+*********************************************************************/
+void Tableboard::update_cards(int player_index, int card_index, const Card& card){
+    QString filename = filename_of_card(card.GetColor(), card.GetNumber());
+    player_cards_button[player_index][card_index]->setIcon(QIcon(filename));
+    player_cards_button[player_index][card_index]->setIconSize(QSize(58, 90));
+    player_cards_button[player_index][card_index]->show();
+}
 
+void Tableboard::turn_down_cards(int player_index, int card_index){
+    player_cards_button[player_index][card_index]->hide();
+}
 
+void Tableboard::update_current(Color c, int num){
+    QString filename = filename_of_card(c, num);
+    ui->current->setPixmap(QPixmap(filename));
+}
 
+void Tableboard::update_score(int player_index, int score){
+    score_label[player_index]->setText(QString::number(score));
+}
+
+void Tableboard::update_playcard(Card &card){
+     QString filename = filename_of_card(card.GetColor(), card.GetNumber());
+    ui->playcard->setPixmap(QPixmap(filename));
+}
+
+void Tableboard::update_turn(int turn){
+    ui->turn->setText("Turn: " + QString::number(turn));
+}
+
+/**************************************************************
+ * All the slots
+ * 1. Button slots
+ * 2. Tableboard slots
+**************************************************************/
+//Buttons
 void Tableboard::on_goback_clicked(){
     emit stopgame();
+    this->close();
 }
+void Tableboard::on_cards_button_2_1_clicked(){
+    emit play(1,0);
+}
+void Tableboard::on_cards_button_2_2_clicked(){
+    emit play(1,1);
+}
+void Tableboard::on_cards_button_2_3_clicked(){
+    emit play(1,2);
+}
+void Tableboard::on_cards_button_2_4_clicked(){
+    emit play(1,3);
+}
+void Tableboard::on_cards_button_2_5_clicked(){
+    emit play(1,4);
+}
+//Game
+void Tableboard::human_play_slot(int player_index, int card_index){
+    human_player_index = player_index;
+    human_play_card = card_index;
+    ifhumanplay = true;
+}
+
+
+
 

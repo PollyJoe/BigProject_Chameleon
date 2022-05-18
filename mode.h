@@ -19,9 +19,9 @@ public:
 
 signals:
     void goback();
+    void mode_signal(int mode_num);
 
 private slots:
-
     void on_goback_clicked();
     void on_mach_vs_mach_clicked();
     void on_human_vs_mach_clicked();
@@ -30,6 +30,7 @@ private slots:
 private:
     Ui::mode *ui;
     Game *game = new Game;
+
 };
 
 #endif // MODE_H

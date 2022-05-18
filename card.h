@@ -24,6 +24,7 @@ public:
     Card(Color c, int num) : color(c), number(num){};
     Card() = default;
     ~Card() = default;
+
     int GetPoint()const;
     int GetNumber()const{return number;}
     Color GetColor()const{return color;}
