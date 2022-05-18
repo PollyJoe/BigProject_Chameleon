@@ -19,7 +19,7 @@ public:
 
 signals:
     void goback();
-    void mode_signal(int mode_num);
+
 
 private slots:
     void on_goback_clicked();
@@ -30,7 +30,7 @@ private slots:
 private:
     Ui::mode *ui;
     Game *game = new Game;
-
+    Tableboard *table = new Tableboard;
 };
 
 #endif // MODE_H

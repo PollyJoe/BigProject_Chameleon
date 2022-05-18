@@ -30,7 +30,7 @@ Tableboard::Tableboard(QWidget *parent) :
     ui->score_1->setText("0");
     ui->score_2->setText("0");   
 
-    ui->goback->hide();
+    ui->countdown->hide();
     QObject::connect(this, SIGNAL(play(int,int)), this, SLOT(human_play_slot(int,int)));
 }
 
@@ -43,6 +43,8 @@ Tableboard::~Tableboard(){
 *************************************************/
 void Tableboard::init_ifhumanplay(){
     ifhumanplay = false;
+
+
 }
 
 int Tableboard::get_human_player_index(){
@@ -92,6 +94,16 @@ QString filename_of_card(Color c, int num){
 /*********************************************************************
  * Functional module: provide the GUI intersurface
 *********************************************************************/
+void Tableboard::hidecards(){
+    QString filename = ":/image/interface/Welcome_img.png";
+    int i;
+    for(i = 0; i < max_inhand; i++){
+        player_cards_button[0][i]->setIcon(QIcon(filename));
+        player_cards_button[0][i]->setIconSize(QSize(58, 90));
+        player_cards_button[0][i]->show();
+    }
+}
+
 void Tableboard::update_cards(int player_index, int card_index, const Card& card){
     QString filename = filename_of_card(card.GetColor(), card.GetNumber());
     player_cards_button[player_index][card_index]->setIcon(QIcon(filename));
@@ -114,13 +126,21 @@ void Tableboard::update_score(int player_index, int score){
 
 void Tableboard::update_playcard(Card &card){
      QString filename = filename_of_card(card.GetColor(), card.GetNumber());
-    ui->playcard->setPixmap(QPixmap(filename));
+     ui->playcard->setPixmap(QPixmap(filename));
 }
 
 void Tableboard::update_turn(int turn){
     ui->turn->setText("Turn: " + QString::number(turn));
 }
 
+void Tableboard::countdown(int time){
+    ui->countdown->setText(QString::number(time));
+    ui->countdown->show();
+}
+
+void Tableboard::hidecountdown(){
+    ui->countdown->hide();
+}
 /**************************************************************
  * All the slots
  * 1. Button slots
@@ -128,31 +148,32 @@ void Tableboard::update_turn(int turn){
 **************************************************************/
 //Buttons
 void Tableboard::on_goback_clicked(){
-    emit stopgame();
-    this->close();
+    QApplication::exit();
 }
 void Tableboard::on_cards_button_2_1_clicked(){
     emit play(1,0);
 }
+
 void Tableboard::on_cards_button_2_2_clicked(){
     emit play(1,1);
 }
+
 void Tableboard::on_cards_button_2_3_clicked(){
     emit play(1,2);
 }
+
 void Tableboard::on_cards_button_2_4_clicked(){
     emit play(1,3);
 }
+
 void Tableboard::on_cards_button_2_5_clicked(){
     emit play(1,4);
 }
+
 //Game
 void Tableboard::human_play_slot(int player_index, int card_index){
     human_player_index = player_index;
     human_play_card = card_index;
     ifhumanplay = true;
 }
-
-
-
 

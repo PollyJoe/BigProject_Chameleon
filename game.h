@@ -76,6 +76,9 @@ private:
     Color current_color;
     int current_num;
     //Tableboard *table = new Tableboard;
+    QVector<Card> player_1_giveup;
+    QVector<Card> player_2_giveup;
+    QVector<QVector<Card>> giveup_cards;
 };
 
 bool valid_rule(const Card& card, Game *g);

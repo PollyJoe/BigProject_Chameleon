@@ -1,5 +1,6 @@
 #include "game.h"
 #include "mainwindow.h"
+#include <QTimer>
 #include <QTime>
 #include <QCoreApplication>
 /************************************************
@@ -36,6 +37,8 @@ Game::Game(){
     players_init(players);
     current_color = static_cast<Color>(arc4random() % colornum);
     current_num = static_cast<int>(arc4random() % set_size);
+    giveup_cards.append(player_1_giveup);
+    giveup_cards.append(player_2_giveup);
 }
 
 void Game::deal(){
@@ -141,11 +144,13 @@ int Game::select_card(bool valid_rule(const Card& card, Game *g), bool (*chame_r
  * Part V  Background judgement of each play
 **************************************************************/
 void Game::check_play(int player_index, Card& cardgiven){
-    update_playcard(cardgiven);
+
     if(players[player_index].ifgiveup || !cardgiven.GetValid()){
         players[(player_index + 1) % 2].UpdateScore(cardgiven);
+        giveup_cards[player_index].append(cardgiven);
     }
     else{
+        update_playcard(cardgiven);
         if(cardgiven.GetChame()) change_color(select_color());
         else change_color(cardgiven.GetColor());
         change_number(cardgiven.GetNumber());
@@ -180,7 +185,6 @@ void Game::play_a_turn(int turn){
 }
 
 void Game::human_play_once(){
-    init_ifhumanplay();
     check_all_card(get_human_player_index());
     Card cardgiven = givecard(get_human_player_index(), get_human_play_card());
     update_playercard(get_human_player_index());
@@ -188,15 +192,20 @@ void Game::human_play_once(){
 }
 
 void Game::human_play_a_turn(int turn){
+    init_ifhumanplay();
     for(int i = 0; i < player_num; i++){
         if(!cardstack.empty()) getcard(i);
+        delay(2);
+    }
+    for(int i = 0; i < player_num; i++)  check_all_card(i);
+    update_turn(turn);
+    int time = 6;
+    while(!get_ifhumanplay() && time > 0){
+        time--;
+        countdown(time);
         delay(1);
     }
-    for(int i = 0; i < player_num; i++)
-        check_all_card(i);
-
-    delay(3);
-    update_turn(turn);
+    hidecountdown();
     if(get_ifhumanplay()) human_play_once();
     else play_once(1);
     delay(2);
@@ -223,6 +232,7 @@ void Game::mach_vs_mach(){
         play_a_turn(turn++);
         delay(1);
     }
+
 }
 
 void Game::human_vs_mach(){
@@ -234,9 +244,11 @@ void Game::human_vs_mach(){
     update_current(current_color, current_num);
     delay(1);
     while(!cardstack.empty()){
+        hidecards();
         human_play_a_turn(turn++);
     }
     while(!players[1].cards_inhand.empty()){
+        hidecards();
         human_play_a_turn(turn++);
     }
 }

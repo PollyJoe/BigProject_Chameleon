@@ -876,6 +876,98 @@
     </size>
    </property>
   </widget>
+  <widget class="QLabel" name="countdown">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>260</y>
+     <width>51</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>38</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>218</red>
+         <green>218</green>
+         <blue>218</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>22</red>
+         <green>36</green>
+         <blue>51</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>55</x>
+     <y>190</y>
+     <width>91</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="text">
+    <string>Current Card</string>
+   </property>
+  </widget>
+  <zorder>countdown</zorder>
+  <zorder>player1</zorder>
+  <zorder>player2</zorder>
+  <zorder>current</zorder>
+  <zorder>score_1</zorder>
+  <zorder>score_2</zorder>
+  <zorder>playcard</zorder>
+  <zorder>turn</zorder>
+  <zorder>cards_button_1_1</zorder>
+  <zorder>cards_button_1_2</zorder>
+  <zorder>cards_button_1_3</zorder>
+  <zorder>cards_button_1_4</zorder>
+  <zorder>cards_button_1_5</zorder>
+  <zorder>cards_button_2_1</zorder>
+  <zorder>cards_button_2_2</zorder>
+  <zorder>cards_button_2_3</zorder>
+  <zorder>cards_button_2_4</zorder>
+  <zorder>cards_button_2_5</zorder>
+  <zorder>goback</zorder>
+  <zorder>label</zorder>
  </widget>
  <resources/>
  <connections/>

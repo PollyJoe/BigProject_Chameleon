@@ -55,20 +55,25 @@ public:
     ~Tableboard();
     friend class mode;
     friend class Tableboard;
+    friend class Game;
+
+    void hidecards();
     void update_cards(int player_index, int card_index, const Card& card);
     void turn_down_cards(int player_index, int card_index);
     void update_score(int player_index, int score);
     void update_current(Color c, int num);
     void update_playcard(Card &card);
     void update_turn(int turn);
+    void start_timer();
 
 
-    //trial: human-play signal
     int get_human_player_index();
     int get_human_play_card();
     bool get_ifhumanplay();
     void init_ifhumanplay();
 
+    void countdown(int time);
+    void hidecountdown();
 signals:
     void stopgame();
     void play(int player_index,int card_index);
@@ -90,8 +95,6 @@ private slots:
     void human_play_slot(int player_index, int card_index);
 
 
-
-
 private:
     Ui::Tableboard *ui;
     QVector<QVector<QPushButton*>> player_cards_button;
@@ -106,6 +109,7 @@ private:
     int human_player_index;
     int human_play_card;
     bool ifhumanplay;
+
 };
 
 

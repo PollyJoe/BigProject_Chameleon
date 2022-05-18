@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     QObject::connect(help_menu, SIGNAL(goback()), this, SLOT(help_goto_main()));
     QObject::connect(playmode, SIGNAL(goback()), this, SLOT(game_goto_main()));
-    QObject::connect(table, SIGNAL(goback()), playmode, SLOT(game_goto_mode()));
+
 
 }
 

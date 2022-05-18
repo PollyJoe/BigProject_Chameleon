@@ -6,8 +6,6 @@ mode::mode(QWidget *parent) :
     ui(new Ui::mode)
 {
     ui->setupUi(this);
-
-
 }
 
 mode::~mode(){

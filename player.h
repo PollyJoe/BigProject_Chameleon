@@ -17,7 +17,9 @@ class Player{
 public:
     Player() = default;
     ~Player() = default;
+
     friend class Game;
+
     void IncreaseScore(int point){score += point;}
     void UpdateScore(Card card){IncreaseScore(card.GetPoint());}
     QVector<Card> cards_inhand;
