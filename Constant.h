@@ -7,5 +7,7 @@ const int colornum = 4;
 const int set_size = 13;
 const int max_inhand = 5;
 const int player_num = 2;
+const int offense_num = 0;
+const int defense_num = 1;
 
 #endif // CONSTANT_H

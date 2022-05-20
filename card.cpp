@@ -15,10 +15,6 @@ int Card::GetPoint()const{
     return point;
 }
 
-
-
-
-
 /***************************************
  * For cardstack:
  *  1. Push cards
