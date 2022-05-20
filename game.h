@@ -35,6 +35,7 @@ public:
 
     void deal();
     void human_deal();
+    void game_countdown();
 
     //play part
     Card givecard(int player_index, int position);
@@ -66,10 +67,12 @@ public:
     void play_a_turn(int turn);
     void human_play_once();
     void human_play_a_turn(int turn);
+    void humans_play_a_turn(int turn);
     void update_playercard(int player_index);  
 
     void mach_vs_mach();
     void human_vs_mach();
+    void human_vs_human();
 
     void show_giveup(int player_index);
     void show_all_giveup();
@@ -88,4 +91,5 @@ private:
 bool valid_rule(const Card& card, Game *g);
 bool chame_rule(const Card& card, Game *g);
 void delay(int time);
+
 #endif // GAME_H

@@ -57,6 +57,7 @@
         <file>Interface/chameplaymessage.png</file>
         <file>Interface/human-machGUI.png</file>
         <file>Interface/gameover.png</file>
+        <file>Interface/human_vs_human.png</file>
     </qresource>
     <qresource prefix="/interface">
         <file>Interface/Welcome_img.png</file>

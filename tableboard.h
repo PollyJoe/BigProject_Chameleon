@@ -71,6 +71,7 @@ public:
     void update_turn(int turn);
     void start_timer();
     void start_game();
+    void player_remind(int player_index);
 
     int get_human_player_index();
     int get_human_play_card();
@@ -99,6 +100,16 @@ private slots:
     void GoBack_slot();
     void on_pause_clicked();
     void on_conti_clicked();
+
+    void on_cards_button_1_1_clicked();
+
+    void on_cards_button_1_2_clicked();
+
+    void on_cards_button_1_3_clicked();
+
+    void on_cards_button_1_4_clicked();
+
+    void on_cards_button_1_5_clicked();
 
 private:
     Ui::Tableboard *ui;

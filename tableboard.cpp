@@ -133,6 +133,16 @@ void Tableboard::start_game(){
     pausegame();
     ui->gameover->hide();
 }
+
+void Tableboard::player_remind(int player_index){
+    ui->playcard->hide();
+    ui->gameover->setText("Player " + QString::number(player_index) + "'s turn");
+    ui->gameover->show();
+    delaytime(1);
+    ui->gameover->hide();
+    ui->playcard->show();
+}
+
 void Tableboard::hidecards(){
     QString filename = ":/image/Card/back_img.png";
     int i;
@@ -192,6 +202,25 @@ void Tableboard::pausegame(){
  * 2. Tableboard slots
 **************************************************************/
 //Buttons
+void Tableboard::on_cards_button_1_1_clicked(){
+    emit play(0,0);
+}
+
+void Tableboard::on_cards_button_1_2_clicked(){
+    emit play(0,1);
+}
+
+void Tableboard::on_cards_button_1_3_clicked(){
+    emit play(0,2);
+}
+
+void Tableboard::on_cards_button_1_4_clicked(){
+    emit play(0,3);
+}
+
+void Tableboard::on_cards_button_1_5_clicked(){
+    emit play(0,4);
+}
 
 void Tableboard::on_cards_button_2_1_clicked(){
     emit play(1,0);
@@ -261,6 +290,8 @@ void Tableboard::endgame(){
     ui->gameover->show();
     ui->pause->hide();
 }
+
+
 
 
 

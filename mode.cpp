@@ -48,7 +48,18 @@ void mode::on_goback_clicked(){
     emit goback();
 }
 
-
-
-
+void mode::on_mach_vs_mach_2_clicked(){
+    this->hide();
+    game = new Game;
+    game->human_vs_human();
+    game->endgame();
+    game->show_all_giveup();
+    while(!game->get_ifgoback()){
+        delay(1);
+        if(game->get_ifgoback()) break;
+    }
+    game->close();
+    this->show();
+    delete game;
+}
 

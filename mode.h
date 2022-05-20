@@ -24,6 +24,8 @@ private slots:
     void on_mach_vs_mach_clicked();
     void on_human_vs_mach_clicked();
 
+    void on_mach_vs_mach_2_clicked();
+
 private:
     Ui::mode *ui;
     Game *game = new Game;

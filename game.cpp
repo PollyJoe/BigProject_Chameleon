@@ -60,8 +60,6 @@ void Game::human_deal(){
         update_cards(1, i, cardstack.top());
         cardstack.pop();
     }
-
-
 }
 
 void Game::update_playercard(int player_index){
@@ -257,12 +255,43 @@ void Game::human_play_once(){
 void Game::human_play_a_turn(int turn){
     init_ifhumanplay();
     if(!cardstack.empty()){
-        getcard(1);
-        mach_getcard(0);
+        getcard(offense_num);
+        mach_getcard(defense_num);
         delay(1);
     }
     for(int i = 0; i < player_num; i++)  check_all_card(i);
     update_turn(turn);
+    game_countdown();
+    if(get_ifhumanplay()) human_play_once();
+    else play_once(offense_num);
+    delay(2);
+    pausegame();
+    mach_play_once(defense_num);
+    delay(1);
+}
+
+void Game::humans_play_a_turn(int turn){
+    if(!cardstack.empty()) {getcard(offense_num); delay(1);}
+    if(!cardstack.empty()) {getcard(defense_num); delay(1);}
+    for(int i = 0; i < player_num; i++)  check_all_card(i);
+    init_ifhumanplay();
+    update_turn(turn);
+    player_remind(offense_num + 1);
+    game_countdown();
+    if(get_ifhumanplay()) human_play_once();
+    else play_once(offense_num);
+    init_ifhumanplay();
+    delay(2);
+    pausegame();
+    player_remind(defense_num + 1);
+    game_countdown();
+    if(get_ifhumanplay()) human_play_once();
+    else play_once(defense_num);
+    delay(2);
+    pausegame();
+}
+
+void Game::game_countdown(){
     int time = 6;
     while(!get_ifhumanplay() && time > 0){
         pausegame();
@@ -271,15 +300,7 @@ void Game::human_play_a_turn(int turn){
         delay(1);
     }
     hidecountdown();
-    if(get_ifhumanplay()) human_play_once();
-    else play_once(1);
-    delay(2);
-    pausegame();
-    mach_play_once(0);
-    delay(1);
 }
-
-
 /*************************************************
  * Game
 *************************************************/
@@ -323,6 +344,18 @@ void Game::human_vs_mach(){
     }
 }
 
+void Game::human_vs_human(){
+    int turn = 1;
+    show(); pausegame();
+    start_game(); pausegame();
+    deal(); pausegame();
+    delay(1);
+    update_current(current_color, current_num); pausegame();
+    delay(1);
+    while(!cardstack.empty()) humans_play_a_turn(turn++); pausegame();
+    while(!players[1].cards_inhand.empty()) humans_play_a_turn(turn++); pausegame();
+}
+
 void Game::show_giveup(int player_index){
     int i;
     for(i = 0; i < giveup_cards[player_index].size(); i++){
@@ -352,4 +385,5 @@ void delay(int time){
     while (QTime::currentTime() < dieTime)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
+
 
