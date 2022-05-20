@@ -13,11 +13,6 @@ help::~help()
     delete ui;
 }
 
-
-
-
-
-
 void help::on_goback_clicked(){
     emit goback();
 }

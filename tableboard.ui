@@ -23,13 +23,27 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Game</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <selectedon>:/interface/Interface/Welcome_img.png</selectedon>
+   </iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#Tableboard{
+	
+	border-image: url(:/interface/Interface/tableboard.png);
+}</string>
+  </property>
+  <property name="locale">
+   <locale language="English" country="UnitedStates"/>
   </property>
   <widget class="QLabel" name="player1">
    <property name="geometry">
     <rect>
      <x>390</x>
-     <y>60</y>
+     <y>40</y>
      <width>131</width>
      <height>41</height>
     </rect>
@@ -84,8 +98,8 @@
   <widget class="QLabel" name="player2">
    <property name="geometry">
     <rect>
-     <x>390</x>
-     <y>470</y>
+     <x>400</x>
+     <y>520</y>
      <width>131</width>
      <height>41</height>
     </rect>
@@ -140,7 +154,7 @@
   <widget class="QLabel" name="current">
    <property name="geometry">
     <rect>
-     <x>70</x>
+     <x>85</x>
      <y>240</y>
      <width>58</width>
      <height>100</height>
@@ -154,7 +168,7 @@
    <property name="geometry">
     <rect>
      <x>730</x>
-     <y>60</y>
+     <y>140</y>
      <width>141</width>
      <height>41</height>
     </rect>
@@ -209,7 +223,7 @@
    <property name="geometry">
     <rect>
      <x>730</x>
-     <y>470</y>
+     <y>430</y>
      <width>141</width>
      <height>41</height>
     </rect>
@@ -264,7 +278,7 @@
    <property name="geometry">
     <rect>
      <x>420</x>
-     <y>240</y>
+     <y>260</y>
      <width>58</width>
      <height>90</height>
     </rect>
@@ -676,6 +690,11 @@
      </disabled>
     </palette>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>30</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Turn: </string>
    </property>
@@ -684,7 +703,7 @@
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>110</y>
+     <y>130</y>
      <width>58</width>
      <height>90</height>
     </rect>
@@ -697,7 +716,7 @@
    <property name="geometry">
     <rect>
      <x>320</x>
-     <y>110</y>
+     <y>130</y>
      <width>58</width>
      <height>90</height>
     </rect>
@@ -710,7 +729,7 @@
    <property name="geometry">
     <rect>
      <x>420</x>
-     <y>110</y>
+     <y>130</y>
      <width>58</width>
      <height>90</height>
     </rect>
@@ -723,7 +742,7 @@
    <property name="geometry">
     <rect>
      <x>520</x>
-     <y>110</y>
+     <y>130</y>
      <width>58</width>
      <height>90</height>
     </rect>
@@ -736,7 +755,7 @@
    <property name="geometry">
     <rect>
      <x>620</x>
-     <y>110</y>
+     <y>130</y>
      <width>58</width>
      <height>90</height>
     </rect>
@@ -749,7 +768,7 @@
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>370</y>
+     <y>390</y>
      <width>58</width>
      <height>90</height>
     </rect>
@@ -762,7 +781,7 @@
    <property name="geometry">
     <rect>
      <x>320</x>
-     <y>370</y>
+     <y>390</y>
      <width>58</width>
      <height>90</height>
     </rect>
@@ -775,7 +794,7 @@
    <property name="geometry">
     <rect>
      <x>420</x>
-     <y>370</y>
+     <y>390</y>
      <width>58</width>
      <height>90</height>
     </rect>
@@ -788,7 +807,7 @@
    <property name="geometry">
     <rect>
      <x>520</x>
-     <y>370</y>
+     <y>390</y>
      <width>58</width>
      <height>90</height>
     </rect>
@@ -801,7 +820,7 @@
    <property name="geometry">
     <rect>
      <x>620</x>
-     <y>370</y>
+     <y>390</y>
      <width>58</width>
      <height>90</height>
     </rect>
@@ -810,77 +829,11 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="goback">
-   <property name="geometry">
-    <rect>
-     <x>800</x>
-     <y>560</y>
-     <width>151</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="palette">
-    <palette>
-     <active>
-      <colorrole role="ButtonText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </active>
-     <inactive>
-      <colorrole role="ButtonText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>218</red>
-         <green>218</green>
-         <blue>218</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </inactive>
-     <disabled>
-      <colorrole role="ButtonText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>41</red>
-         <green>14</green>
-         <blue>73</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </disabled>
-    </palette>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>20</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Go back</string>
-   </property>
-   <property name="icon">
-    <iconset>
-     <selectedon>:/icon/icon/back.png</selectedon>
-    </iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>60</width>
-     <height>60</height>
-    </size>
-   </property>
-  </widget>
   <widget class="QLabel" name="countdown">
    <property name="geometry">
     <rect>
-     <x>750</x>
-     <y>260</y>
+     <x>770</x>
+     <y>280</y>
      <width>51</width>
      <height>51</height>
     </rect>
@@ -922,14 +875,19 @@
      </disabled>
     </palette>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>30</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="current_card">
    <property name="geometry">
     <rect>
-     <x>55</x>
+     <x>70</x>
      <y>190</y>
      <width>91</width>
      <height>51</height>
@@ -946,6 +904,119 @@
    </property>
    <property name="text">
     <string>Current Card</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="GoBack">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>570</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Go Back</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <selectedon>:/icon/icon/back.png</selectedon>
+    </iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>60</width>
+     <height>60</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QLabel" name="gameover">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>290</y>
+     <width>191</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>47</green>
+         <blue>146</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>218</red>
+         <green>218</green>
+         <blue>218</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="96">
+         <red>164</red>
+         <green>166</green>
+         <blue>168</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>30</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pause">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>10</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="conti">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>230</y>
+     <width>141</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </widget>
   <zorder>countdown</zorder>
@@ -966,8 +1037,11 @@
   <zorder>cards_button_2_3</zorder>
   <zorder>cards_button_2_4</zorder>
   <zorder>cards_button_2_5</zorder>
-  <zorder>goback</zorder>
-  <zorder>label</zorder>
+  <zorder>current_card</zorder>
+  <zorder>GoBack</zorder>
+  <zorder>gameover</zorder>
+  <zorder>pause</zorder>
+  <zorder>conti</zorder>
  </widget>
  <resources/>
  <connections/>

@@ -52,6 +52,11 @@
         <file>Card/heartJ.png</file>
         <file>Card/heartK.png</file>
         <file>Card/heartQ.png</file>
+        <file>Card/back_img.png</file>
+        <file>Interface/chameplayeffect.png</file>
+        <file>Interface/chameplaymessage.png</file>
+        <file>Interface/human-machGUI.png</file>
+        <file>Interface/gameover.png</file>
     </qresource>
     <qresource prefix="/interface">
         <file>Interface/Welcome_img.png</file>
@@ -59,5 +64,7 @@
     </qresource>
     <qresource prefix="/icon">
         <file>icon/back.png</file>
+        <file>icon/pause.png</file>
+        <file>icon/continue.png</file>
     </qresource>
 </RCC>

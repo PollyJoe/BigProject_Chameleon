@@ -29,15 +29,17 @@ class Game : public Tableboard
 public:
     //init part
     Game();
+    ~Game() = default;
     friend class mode;
     friend class MainWindow;
 
     void deal();
+    void human_deal();
 
     //play part
     Card givecard(int player_index, int position);
     void getcard(int player_index);
-
+    void mach_getcard(int player_index);
     //rule part
     friend bool valid_rule(const Card& card, Game *g);
     friend bool chame_rule(const Card& card, Game *g);
@@ -51,24 +53,26 @@ public:
     int select_card(bool (*valid_rule)(const Card& card, Game *g), bool (*chame_rule)(const Card& card, Game *g), int player_index);
 
     void check_play(int player_index, Card& cardgiven);
+    void human_check_play(int player_index, Card& cardgiven);
     Color select_color(){return static_cast<Color>(arc4random() % colornum);}
-
+    Color human_select_color();
 
     //Change the current color and number
     void change_color(Color c){current_color = c;}
     void change_number(int num){current_num = num;}
     //Game
+    void mach_play_once(int player_index);
     void play_once(int player_index);
     void play_a_turn(int turn);
     void human_play_once();
     void human_play_a_turn(int turn);
-    void update_playercard(int player_index);
+    void update_playercard(int player_index);  
 
     void mach_vs_mach();
     void human_vs_mach();
 
-
-
+    void show_giveup(int player_index);
+    void show_all_giveup();
 private:
     Cardstack cardstack;
     Players players;

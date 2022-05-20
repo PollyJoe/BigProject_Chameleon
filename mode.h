@@ -19,18 +19,14 @@ public:
 
 signals:
     void goback();
-
-
 private slots:
     void on_goback_clicked();
     void on_mach_vs_mach_clicked();
     void on_human_vs_mach_clicked();
-    void game_go_to_mode();
 
 private:
     Ui::mode *ui;
     Game *game = new Game;
-    Tableboard *table = new Tableboard;
 };
 
 #endif // MODE_H

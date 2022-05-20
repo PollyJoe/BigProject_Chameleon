@@ -50,6 +50,20 @@ void Game::deal(){
     }
 }
 
+void Game::human_deal(){
+    int i;
+    for(i = 0; i < max_inhand - 1; i++){
+        players[0].cards_inhand.push_back(cardstack.top());
+        hidecards();
+        cardstack.pop();
+        players[1].cards_inhand.push_back(cardstack.top());
+        update_cards(1, i, cardstack.top());
+        cardstack.pop();
+    }
+
+
+}
+
 void Game::update_playercard(int player_index){
     int i;
     for(i = 0; i < players[player_index].cards_inhand.size(); i++)
@@ -75,6 +89,11 @@ void Game::getcard(int player_index){
     cardstack.pop();
 }
 
+void Game::mach_getcard(int player_index){
+    players[player_index].cards_inhand.push_back(cardstack.top());
+    hidecards();//GUI
+    cardstack.pop();
+}
 /***************************************************************
  * Part III  Background pre-game process of each play
  * 1. Check whether the cards in hand are valid
@@ -140,11 +159,29 @@ int Game::select_card(bool valid_rule(const Card& card, Game *g), bool (*chame_r
    return index;
 }
 
+Color Game::human_select_color(){
+    Color color;
+    QMessageBox msgBox;
+    msgBox.setText("CHAMELEON!");
+    msgBox.setInformativeText("Please choose a color.");
+    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel | QMessageBox::SaveAll);
+    msgBox.button(QMessageBox::Save)->setText("Spade");
+    msgBox.button(QMessageBox::Discard)->setText("Club");
+    msgBox.button(QMessageBox::Cancel)->setText("Heart");
+    msgBox.button(QMessageBox::SaveAll)->setText("Diamond");
+    int ret = msgBox.exec();
+    switch(ret){
+    case QMessageBox::Save: {color = spade;break;}
+    case QMessageBox::Discard: {color = club;break;}
+    case QMessageBox::Cancel: {color = heart;break;}
+    default:{color = diamond; break;}
+    }
+    return color;
+}
 /**************************************************************
  * Part V  Background judgement of each play
 **************************************************************/
 void Game::check_play(int player_index, Card& cardgiven){
-
     if(players[player_index].ifgiveup || !cardgiven.GetValid()){
         players[(player_index + 1) % 2].UpdateScore(cardgiven);
         giveup_cards[player_index].append(cardgiven);
@@ -158,12 +195,35 @@ void Game::check_play(int player_index, Card& cardgiven){
     }
     for(int i = 0; i < player_num; i++) update_score(i, players[i].score);
 }
+
+void Game::human_check_play(int player_index, Card& cardgiven){
+    if(players[player_index].ifgiveup || !cardgiven.GetValid()){
+        players[(player_index + 1) % 2].UpdateScore(cardgiven);
+        giveup_cards[player_index].append(cardgiven);
+    }
+    else{
+        update_playcard(cardgiven);
+        if(cardgiven.GetChame()) change_color(human_select_color());
+        else change_color(cardgiven.GetColor());
+        change_number(cardgiven.GetNumber());
+        update_current(current_color, current_num);
+    }
+    for(int i = 0; i < player_num; i++) update_score(i, players[i].score);
+}
 /***************************************************************
  * Part VI  Game module
  * 1. One play from one player
  * 2. A total turn (2 plays, for mach-mach game and trustseeship)
  * 3. Update the card
 ***************************************************************/
+void Game::mach_play_once(int player_index){
+    hidecards();
+    int index = select_card(valid_rule, chame_rule, player_index);
+    Card cardgiven = givecard(player_index, index);
+    check_play(player_index, cardgiven);
+    delay(1);
+}
+
 void Game::play_once(int player_index){
     int index = select_card(valid_rule, chame_rule, player_index);
     Card cardgiven = givecard(player_index, index);
@@ -174,10 +234,12 @@ void Game::play_once(int player_index){
 
 void Game::play_a_turn(int turn){
     for(int i = 0; i < player_num; i++){
+        pausegame();
         if(!cardstack.empty()) getcard(i);
         delay(1);
     }
     for(int i = 0; i < player_num; i++){
+        pausegame();
         update_turn(turn);
         play_once(i);
         delay(1);
@@ -185,22 +247,25 @@ void Game::play_a_turn(int turn){
 }
 
 void Game::human_play_once(){
+    pausegame();
     check_all_card(get_human_player_index());
     Card cardgiven = givecard(get_human_player_index(), get_human_play_card());
     update_playercard(get_human_player_index());
-    check_play(get_human_player_index(), cardgiven);
+    human_check_play(get_human_player_index(), cardgiven);
 }
 
 void Game::human_play_a_turn(int turn){
     init_ifhumanplay();
-    for(int i = 0; i < player_num; i++){
-        if(!cardstack.empty()) getcard(i);
-        delay(2);
+    if(!cardstack.empty()){
+        getcard(1);
+        mach_getcard(0);
+        delay(1);
     }
     for(int i = 0; i < player_num; i++)  check_all_card(i);
     update_turn(turn);
     int time = 6;
     while(!get_ifhumanplay() && time > 0){
+        pausegame();
         time--;
         countdown(time);
         delay(1);
@@ -209,60 +274,68 @@ void Game::human_play_a_turn(int turn){
     if(get_ifhumanplay()) human_play_once();
     else play_once(1);
     delay(2);
-    play_once(0);
+    pausegame();
+    mach_play_once(0);
     delay(1);
 }
 
 
-
+/*************************************************
+ * Game
+*************************************************/
 
 void Game::mach_vs_mach(){
     int turn = 1;
-    show();
+    show(); pausegame();
+    start_game(); pausegame();
+    deal(); pausegame();
     delay(1);
-    deal();
-    delay(1);
-    update_current(current_color, current_num);
+    update_current(current_color, current_num); pausegame();
     delay(1);
     while(!cardstack.empty()){
-        play_a_turn(turn++);
+        play_a_turn(turn++); pausegame();
         delay(1);
     }
     while(!players[1].cards_inhand.empty()){
-        play_a_turn(turn++);
+        play_a_turn(turn++); pausegame();
         delay(1);
     }
-
+    endgame();
+    show_all_giveup();
+    endgame();
 }
 
 void Game::human_vs_mach(){
     int turn = 1;
-    show();
+    show(); pausegame();
+    start_game(); pausegame();
+    human_deal(); pausegame();
     delay(1);
-    deal();
-    delay(1);
-    update_current(current_color, current_num);
+    update_current(current_color, current_num); pausegame();
     delay(1);
     while(!cardstack.empty()){
         hidecards();
-        human_play_a_turn(turn++);
+        human_play_a_turn(turn++); pausegame();
     }
     while(!players[1].cards_inhand.empty()){
         hidecards();
-        human_play_a_turn(turn++);
+        human_play_a_turn(turn++); pausegame();
     }
 }
 
+void Game::show_giveup(int player_index){
+    int i;
+    for(i = 0; i < giveup_cards[player_index].size(); i++){
+        update_cards(player_index, i % max_inhand, giveup_cards[player_index][i]);
+        delaytime(1);
+    }
+}
 
-
-
-
-
-
-
-
-
-
+void Game::show_all_giveup(){
+    for(int i = 0; i < player_num; i++){
+        show_giveup(i);
+    }
+}
 /********************************************************************
  * Rule part, outside the class
 ********************************************************************/

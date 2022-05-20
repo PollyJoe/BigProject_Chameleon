@@ -6,6 +6,7 @@ mode::mode(QWidget *parent) :
     ui(new Ui::mode)
 {
     ui->setupUi(this);
+
 }
 
 mode::~mode(){
@@ -15,18 +16,33 @@ mode::~mode(){
 
 void mode::on_mach_vs_mach_clicked(){
     this->hide();
+    game = new Game;
     game->mach_vs_mach();
+    game->endgame();
+    game->show_all_giveup();
+    while(!game->get_ifgoback()){
+        delay(1);
+        if(game->get_ifgoback()) break;
+    }
+    game->close();
+    this->show();
+    delete game;
 }
 
 void mode::on_human_vs_mach_clicked(){
     this->hide();
+    game = new Game;
     game->human_vs_mach();
-}
-
-void mode::game_go_to_mode(){
+    game->endgame();
+    game->show_all_giveup();
+    while(!game->get_ifgoback()){
+        delay(1);
+        if(game->get_ifgoback()) break;
+    }
+    game->close();
     this->show();
+    delete game;
 }
-
 
 void mode::on_goback_clicked(){
     emit goback();
