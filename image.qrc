@@ -67,5 +67,7 @@
         <file>icon/back.png</file>
         <file>icon/pause.png</file>
         <file>icon/continue.png</file>
+        <file>icon/mute.png</file>
+        <file>icon/sound.png</file>
     </qresource>
 </RCC>

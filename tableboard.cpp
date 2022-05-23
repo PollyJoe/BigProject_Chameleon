@@ -9,7 +9,8 @@ Tableboard::Tableboard(QWidget *parent) :
     setWindowTitle("Game");
 
 
-
+    ui->sound->setIcon(QIcon(":/icon/icon/sound.png"));
+    ui->sound->setIconSize(QSize(50,50));
     //Put the objects into the vector
     //cards
     player1_cards_button.append(ui->cards_button_1_1);
@@ -46,6 +47,7 @@ Tableboard::Tableboard(QWidget *parent) :
     ui->countdown->hide();
     QObject::connect(this, SIGNAL(play(int,int)), this, SLOT(human_play_slot(int,int)));
     QObject::connect(this, SIGNAL(closegame()),this,SLOT(GoBack_slot()));
+
 }
 
 Tableboard::~Tableboard(){
@@ -119,9 +121,35 @@ void delaytime(int time){
     while (QTime::currentTime() < dieTime)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
+
+
 /*********************************************************************
  * Functional module: provide the GUI intersurface
 *********************************************************************/
+void Tableboard::musicplayer(Mode mode){
+    switch(mode){
+    case(hh):{
+        bgm = new QSound(":/game/music/human_human.wav",this);
+        bgm->setLoops(-1);
+        bgm->play();
+        break;
+    }
+    case(hm):{
+        bgm = new QSound(":/game/music/human_machine.wav",this);
+        bgm->setLoops(-1);
+        bgm->play();
+        break;
+    }
+    case(mm):{
+        bgm = new QSound(":/game/music/machine_machine.wav",this);
+        bgm->setLoops(-1);
+        bgm->play();
+        break;
+    }
+    default:break;
+    }
+}
+
 void Tableboard::start_game(){
     ui->gameover->setText("READY?");
     delaytime(1);
@@ -253,11 +281,28 @@ void Tableboard::GoBack_slot(){
 void Tableboard::on_pause_clicked(){
     ui->conti->show();
     ifstop = true;
+    bgm->stop();
 }
 
 void Tableboard::on_conti_clicked(){
     ui->conti->hide();
     ifstop = false;
+    if(ifmute) bgm->play();
+}
+
+void Tableboard::on_sound_clicked(){
+    if(ifmute){
+        ui->sound->setIcon(QIcon(":/icon/icon/mute.png"));
+        ui->sound->setIconSize(QSize(50,50));
+        bgm->stop();
+        ifmute = false;
+    }
+    else{
+        ui->sound->setIcon(QIcon(":/icon/icon/sound.png"));
+        ui->sound->setIconSize(QSize(50,50));
+        bgm->play();
+        ifmute = true;
+    }
 }
 
 //Game
@@ -290,13 +335,6 @@ void Tableboard::endgame(){
     ui->gameover->show();
     ui->pause->hide();
 }
-
-
-
-
-
-
-
 
 
 

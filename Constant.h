@@ -2,6 +2,7 @@
 #define CONSTANT_H
 
 enum Color{ spade, club, diamond, heart };
+enum Mode{ hh, hm, mm };
 const int stack_size = 52;
 const int colornum = 4;
 const int set_size = 13;

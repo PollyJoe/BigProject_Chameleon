@@ -14,7 +14,7 @@
 #include <QTime>
 #include "card.h"
 #include "player.h"
-
+#include <QtMultimedia>
 /***************************************************
  * Table :
  *  1. Labels & buttons:
@@ -60,6 +60,8 @@ public:
     friend class mode;
     friend class Tableboard;
     friend class Game;
+    bool ifmute = true;
+    QSound *bgm;
 
     void paintEvent(QPaintEvent* event) override;
     void hidecards();
@@ -72,6 +74,7 @@ public:
     void start_timer();
     void start_game();
     void player_remind(int player_index);
+    void musicplayer(Mode mode);
 
     int get_human_player_index();
     int get_human_play_card();
@@ -102,14 +105,11 @@ private slots:
     void on_conti_clicked();
 
     void on_cards_button_1_1_clicked();
-
     void on_cards_button_1_2_clicked();
-
     void on_cards_button_1_3_clicked();
-
     void on_cards_button_1_4_clicked();
-
     void on_cards_button_1_5_clicked();
+    void on_sound_clicked();
 
 private:
     Ui::Tableboard *ui;
@@ -130,4 +130,5 @@ QString color_of_card(Color c);
 QString number_of_card(int num);
 QString filename_of_card(Color c, int num);
 void delaytime(int time);
+
 #endif // TABLEBOARD_H

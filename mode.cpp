@@ -63,3 +63,8 @@ void mode::on_mach_vs_mach_2_clicked(){
     delete game;
 }
 
+
+void mode::on_pushButton_clicked(){
+    QApplication::exit();
+}
+

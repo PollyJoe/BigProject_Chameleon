@@ -255,18 +255,18 @@ void Game::human_play_once(){
 void Game::human_play_a_turn(int turn){
     init_ifhumanplay();
     if(!cardstack.empty()){
-        getcard(offense_num);
-        mach_getcard(defense_num);
+        getcard(defense_num);
+        mach_getcard(offense_num);
         delay(1);
     }
     for(int i = 0; i < player_num; i++)  check_all_card(i);
     update_turn(turn);
     game_countdown();
     if(get_ifhumanplay()) human_play_once();
-    else play_once(offense_num);
+    else play_once(defense_num);
     delay(2);
     pausegame();
-    mach_play_once(defense_num);
+    mach_play_once(offense_num);
     delay(1);
 }
 
@@ -306,6 +306,7 @@ void Game::game_countdown(){
 *************************************************/
 
 void Game::mach_vs_mach(){
+   musicplayer(mm);
     int turn = 1;
     show(); pausegame();
     start_game(); pausegame();
@@ -324,9 +325,11 @@ void Game::mach_vs_mach(){
     endgame();
     show_all_giveup();
     endgame();
+    score_record(mm);
 }
 
 void Game::human_vs_mach(){
+    musicplayer(hm);
     int turn = 1;
     show(); pausegame();
     start_game(); pausegame();
@@ -340,11 +343,13 @@ void Game::human_vs_mach(){
     }
     while(!players[1].cards_inhand.empty()){
         hidecards();
-        human_play_a_turn(turn++); pausegame();
+        human_play_a_turn(turn++); pausegame();        
     }
+    score_record(hm);
 }
 
 void Game::human_vs_human(){
+    musicplayer(hh);
     int turn = 1;
     show(); pausegame();
     start_game(); pausegame();
@@ -352,8 +357,9 @@ void Game::human_vs_human(){
     delay(1);
     update_current(current_color, current_num); pausegame();
     delay(1);
-    while(!cardstack.empty()) humans_play_a_turn(turn++); pausegame();
-    while(!players[1].cards_inhand.empty()) humans_play_a_turn(turn++); pausegame();
+    while(!cardstack.empty()) {humans_play_a_turn(turn++); pausegame();}
+    while(!players[1].cards_inhand.empty()) {humans_play_a_turn(turn++); pausegame();}
+    score_record(hh);
 }
 
 void Game::show_giveup(int player_index){
@@ -368,6 +374,29 @@ void Game::show_all_giveup(){
     for(int i = 0; i < player_num; i++){
         show_giveup(i);
     }
+}
+
+void Game::score_record(Mode mode){
+    QString location = QCoreApplication::applicationDirPath();
+    QString filename = location + "/score.txt";
+    QFile file(filename);
+    file.open(QIODevice::Append | QIODevice::Text);
+    QString s1 = QString::number(players[offense_num].score);
+    QString s2 = QString::number(players[defense_num].score);
+    QDateTime dateTime(QDateTime::currentDateTime());
+    QString playtime = dateTime.toString("yyyy-MM-dd hh:mm:ss ");
+    QString playmode;
+    switch(mode){
+    case hh: {playmode = "Human VS Human     ";break;}
+    case hm: {playmode = "Human VS Machine   ";break;}
+    case mm: {playmode = "Machine VS Machine ";break;}
+    default: break;
+    }
+    QTextStream stream(&file);
+    stream << playtime << " " << playmode << "\n";
+    stream << "Player 1 : " << s1 << "\n";
+    stream << "Player 2 : " << s2 << "\n\n";
+    file.close();
 }
 /********************************************************************
  * Rule part, outside the class

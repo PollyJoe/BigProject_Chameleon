@@ -2,7 +2,11 @@
 #define GAME_H
 #include "player.h"
 #include "tableboard.h"
-
+#include <QSound>
+#include <QFile>
+#include <QTextStream>
+#include <QDateTime>
+#include <QDir>
 /************************************************************
  * Process of a game:
  *  1. Initialize a cardstack
@@ -76,6 +80,8 @@ public:
 
     void show_giveup(int player_index);
     void show_all_giveup();
+
+    void score_record(Mode mode);
 private:
     Cardstack cardstack;
     Players players;
@@ -91,5 +97,6 @@ private:
 bool valid_rule(const Card& card, Game *g);
 bool chame_rule(const Card& card, Game *g);
 void delay(int time);
+
 
 #endif // GAME_H

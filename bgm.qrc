@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/welcome">
+        <file>music/Welcome_bgm.wav</file>
+        <file>music/welcome.wav</file>
+    </qresource>
+    <qresource prefix="/game">
+        <file>music/human_machine.wav</file>
+        <file>music/human_human.wav</file>
+        <file>music/machine_machine.wav</file>
+    </qresource>
+</RCC>
