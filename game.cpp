@@ -3,6 +3,7 @@
 #include <QTimer>
 #include <QTime>
 #include <QCoreApplication>
+#include <cmath>
 /************************************************
  * This is only the functional part, no GUI
 ************************************************/
@@ -176,6 +177,29 @@ Color Game::human_select_color(){
     }
     return color;
 }
+
+Color Game::select_color(int player_index){
+    int colornum[4] = {0,0,0,0};
+    for(auto &c : players[player_index].cards_inhand){
+        switch(c.GetColor()){
+        case spade:{colornum[0] += 1;break;}
+        case club:{colornum[1] += 1;break;}
+        case heart:{colornum[2] += 1;break;}
+        case diamond:{colornum[3] += 1;break;}
+        default:break;
+        }
+    }
+    int max_index = 0;
+    for(int i = 1; i < max_inhand - 1;i++)
+        if(colornum[i] > colornum[i - 1]) max_index = i;
+    switch(max_index){
+    case 0:{return spade;break;}
+    case 1:{return club;break;}
+    case 2:{return heart;break;}
+    case 3:{return diamond;break;}
+    default:{return spade;break;}
+    }
+}
 /**************************************************************
  * Part V  Background judgement of each play
 **************************************************************/
@@ -186,7 +210,7 @@ void Game::check_play(int player_index, Card& cardgiven){
     }
     else{
         update_playcard(cardgiven);
-        if(cardgiven.GetChame()) change_color(select_color());
+        if(cardgiven.GetChame()) change_color(select_color(player_index));
         else change_color(cardgiven.GetColor());
         change_number(cardgiven.GetNumber());
         update_current(current_color, current_num);

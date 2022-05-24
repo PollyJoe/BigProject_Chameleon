@@ -59,7 +59,7 @@ public:
 
     void check_play(int player_index, Card& cardgiven);
     void human_check_play(int player_index, Card& cardgiven);
-    Color select_color(){return static_cast<Color>(arc4random() % colornum);}
+    Color select_color(int player_index);
     Color human_select_color();
 
     //Change the current color and number
