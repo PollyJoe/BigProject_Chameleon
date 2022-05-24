@@ -182,15 +182,15 @@ Color Game::select_color(int player_index){
     int colornum[4] = {0,0,0,0};
     for(auto &c : players[player_index].cards_inhand){
         switch(c.GetColor()){
-        case spade:{colornum[0] += 1;break;}
-        case club:{colornum[1] += 1;break;}
-        case heart:{colornum[2] += 1;break;}
-        case diamond:{colornum[3] += 1;break;}
+        case spade:{colornum[0] += c.GetPoint();break;}
+        case club:{colornum[1] += c.GetPoint();break;}
+        case heart:{colornum[2] += c.GetPoint();break;}
+        case diamond:{colornum[3] += c.GetPoint();break;}
         default:break;
         }
     }
     int max_index = 0;
-    for(int i = 1; i < max_inhand - 1;i++)
+    for(int i = 1; i < players[player_index].cards_inhand.size();i++)
         if(colornum[i] > colornum[i - 1]) max_index = i;
     switch(max_index){
     case 0:{return spade;break;}
