@@ -4,9 +4,7 @@
 #include <QTime>
 #include <QCoreApplication>
 #include <cmath>
-/************************************************
- * This is only the functional part, no GUI
-************************************************/
+
 
 /************************************************************
  * Process of a game:
@@ -28,10 +26,10 @@
 ************************************************************/
 
 /************************************************************
- * Part I  Preparation for a new game
- * 1. Constructor
- * 2. Deal the card
- * 3. Update the cards
+ * Preparation for a new game
+ *  1. Constructor
+ *  2. Deal the card
+ *  3. Update current situation
 ************************************************************/
 Game::Game(){
     stack_init(cardstack);
@@ -63,17 +61,21 @@ void Game::human_deal(){
     }
 }
 
-void Game::update_playercard(int player_index){
-    int i;
-    for(i = 0; i < players[player_index].cards_inhand.size(); i++)
-        update_cards(player_index, i, players[player_index].cards_inhand[i]);
-    turn_down_cards(player_index, players[player_index].cards_inhand.size());
+/**********************************************************
+ * Rules
+**********************************************************/
+void Game::CheckValid(bool (*valid_rule)(const Card& card, Game *g), Player& player){
+    for(auto &c : player.cards_inhand) c.SetValid(valid_rule(c, this));
 }
-/*************************************************************
- * Part II  Basic play of the game
- * 1. Give a card
- * 2. Get a card from the stack
-*************************************************************/
+
+void Game::CheckChame(bool (*chame_rule)(const Card& card, Game *g), Player& player){
+    for(auto &c : player.cards_inhand) c.SetChame(chame_rule(c, this));
+}
+
+/***********************************************************
+ * Machine play
+***********************************************************/
+//Basic operation
 Card Game::givecard(int player_index, int position){
     players[player_index].null_slot = position;
     Card givecard = players[player_index].cards_inhand[position];
@@ -89,22 +91,10 @@ void Game::getcard(int player_index){
 }
 
 void Game::mach_getcard(int player_index){
+    //Only for human-machine mode
     players[player_index].cards_inhand.push_back(cardstack.top());
     hidecards();//GUI
     cardstack.pop();
-}
-/***************************************************************
- * Part III  Background pre-game process of each play
- * 1. Check whether the cards in hand are valid
- * 2. Check whether the cards in hand are chameleon card
- * 1 & 2 combine to one function (check_of_all_card)
-***************************************************************/
-void Game::CheckValid(bool (*valid_rule)(const Card& card, Game *g), Player& player){
-    for(auto &c : player.cards_inhand) c.SetValid(valid_rule(c, this));
-}
-
-void Game::CheckChame(bool (*chame_rule)(const Card& card, Game *g), Player& player){
-    for(auto &c : player.cards_inhand) c.SetChame(chame_rule(c, this));
 }
 
 void Game::check_all_card(int player_index){
@@ -112,9 +102,7 @@ void Game::check_all_card(int player_index){
     CheckChame(chame_rule, players[player_index]);
 }
 
-/****************************************************************
- * Part IV  (Only for machine-play or trustseeship) a simple AI to choose the card
-****************************************************************/
+//Strategy
 int Game::select_card(bool valid_rule(const Card& card, Game *g), bool (*chame_rule)(const Card& card, Game *g), int player_index){
    int index = -1;
    int chame = 0;
@@ -158,6 +146,34 @@ int Game::select_card(bool valid_rule(const Card& card, Game *g), bool (*chame_r
    return index;
 }
 
+Color Game::select_color(int player_index){
+    int colornum[4] = {0,0,0,0};
+    for(auto &c : players[player_index].cards_inhand){
+        switch(c.GetColor()){
+        case spade:{colornum[0] += c.GetPoint();break;}
+        case club:{colornum[1] += c.GetPoint();break;}
+        case heart:{colornum[2] += c.GetPoint();break;}
+        case diamond:{colornum[3] += c.GetPoint();break;}
+        default:break;
+        }
+    }
+    int max_index = 0;
+    for(int i = 1; i < players[player_index].cards_inhand.size();i++){
+        if(colornum[i] > colornum[max_index]) max_index = i;
+    }
+
+    switch(max_index){
+    case 0:{return spade;break;}
+    case 1:{return club;break;}
+    case 2:{return heart;break;}
+    case 3:{return diamond;break;}
+    default:{return spade;break;}
+    }
+}
+
+/********************************************************************
+ * Human play
+********************************************************************/
 Color Game::human_select_color(){
     Color color;
     QMessageBox msgBox;
@@ -178,31 +194,9 @@ Color Game::human_select_color(){
     return color;
 }
 
-Color Game::select_color(int player_index){
-    int colornum[4] = {0,0,0,0};
-    for(auto &c : players[player_index].cards_inhand){
-        switch(c.GetColor()){
-        case spade:{colornum[0] += c.GetPoint();break;}
-        case club:{colornum[1] += c.GetPoint();break;}
-        case heart:{colornum[2] += c.GetPoint();break;}
-        case diamond:{colornum[3] += c.GetPoint();break;}
-        default:break;
-        }
-    }
-    int max_index = 0;
-    for(int i = 1; i < players[player_index].cards_inhand.size();i++)
-        if(colornum[i] > colornum[i - 1]) max_index = i;
-    switch(max_index){
-    case 0:{return spade;break;}
-    case 1:{return club;break;}
-    case 2:{return heart;break;}
-    case 3:{return diamond;break;}
-    default:{return spade;break;}
-    }
-}
-/**************************************************************
- * Part V  Background judgement of each play
-**************************************************************/
+/*********************************************************************
+ * Background check
+*********************************************************************/
 void Game::check_play(int player_index, Card& cardgiven){
     if(players[player_index].ifgiveup || !cardgiven.GetValid()){
         players[(player_index + 1) % 2].UpdateScore(cardgiven);
@@ -232,12 +226,18 @@ void Game::human_check_play(int player_index, Card& cardgiven){
     }
     for(int i = 0; i < player_num; i++) update_score(i, players[i].score);
 }
-/***************************************************************
- * Part VI  Game module
- * 1. One play from one player
- * 2. A total turn (2 plays, for mach-mach game and trustseeship)
- * 3. Update the card
-***************************************************************/
+
+void Game::update_playercard(int player_index){
+    int i;
+    for(i = 0; i < players[player_index].cards_inhand.size(); i++)
+        update_cards(player_index, i, players[player_index].cards_inhand[i]);
+    turn_down_cards(player_index, players[player_index].cards_inhand.size());
+}
+
+/**************************************************************
+ * Encapsulate the game
+**************************************************************/
+//Once
 void Game::mach_play_once(int player_index){
     hidecards();
     int index = select_card(valid_rule, chame_rule, player_index);
@@ -255,6 +255,15 @@ void Game::play_once(int player_index){
     delay(1);
 }
 
+void Game::human_play_once(){
+    pausegame();
+    check_all_card(get_human_player_index());
+    Card cardgiven = givecard(get_human_player_index(), get_human_play_card());
+    update_playercard(get_human_player_index());
+    human_check_play(get_human_player_index(), cardgiven);
+}
+
+//Turn
 void Game::play_a_turn(int turn){
     for(int i = 0; i < player_num; i++){
         pausegame();
@@ -267,14 +276,6 @@ void Game::play_a_turn(int turn){
         play_once(i);
         delay(1);
     }
-}
-
-void Game::human_play_once(){
-    pausegame();
-    check_all_card(get_human_player_index());
-    Card cardgiven = givecard(get_human_player_index(), get_human_play_card());
-    update_playercard(get_human_player_index());
-    human_check_play(get_human_player_index(), cardgiven);
 }
 
 void Game::human_play_a_turn(int turn){
@@ -316,20 +317,7 @@ void Game::humans_play_a_turn(int turn){
     pausegame();
 }
 
-void Game::game_countdown(){
-    int time = 6;
-    while(!get_ifhumanplay() && time > 0){
-        pausegame();
-        time--;
-        countdown(time);
-        delay(1);
-    }
-    hidecountdown();
-}
-/*************************************************
- * Game
-*************************************************/
-
+//Total game
 void Game::mach_vs_mach(){
    musicplayer(mm);
     int turn = 1;
@@ -368,7 +356,7 @@ void Game::human_vs_mach(){
     }
     while(!players[1].cards_inhand.empty()){
         hidecards();
-        human_play_a_turn(turn++); pausegame();        
+        human_play_a_turn(turn++); pausegame();
     }
     score_record(hm);
 }
@@ -385,6 +373,20 @@ void Game::human_vs_human(){
     while(!cardstack.empty()) {humans_play_a_turn(turn++); pausegame();}
     while(!players[1].cards_inhand.empty()) {humans_play_a_turn(turn++); pausegame();}
     score_record(hh);
+}
+
+/**********************************************************
+ * Game service
+**********************************************************/
+void Game::game_countdown(){
+    int time = 6;
+    while(!get_ifhumanplay() && time > 0){
+        pausegame();
+        time--;
+        countdown(time);
+        delay(1);
+    }
+    hidecountdown();
 }
 
 void Game::show_giveup(int player_index){
@@ -425,7 +427,7 @@ void Game::score_record(Mode mode){
 }
 
 /********************************************************************
- * Rule part, outside the class
+ * Auxiliary
 ********************************************************************/
 bool valid_rule(const Card& card, Game *g){
     return (card.GetColor() == g->current_color) || (card.GetNumber() == g->current_num) || (card.GetNumber() == 11);
