@@ -247,6 +247,7 @@ void Game::mach_play_once(int player_index){
 }
 
 void Game::play_once(int player_index){
+    pausegame();
     int index = select_card(valid_rule, chame_rule, player_index);
     Card cardgiven = givecard(player_index, index);
     update_playercard(player_index);
@@ -422,6 +423,7 @@ void Game::score_record(Mode mode){
     stream << "Player 2 : " << s2 << "\n\n";
     file.close();
 }
+
 /********************************************************************
  * Rule part, outside the class
 ********************************************************************/

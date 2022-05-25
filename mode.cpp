@@ -11,7 +11,6 @@ mode::mode(QWidget *parent) :
 
 mode::~mode(){
     delete ui;
-
 }
 
 void mode::on_mach_vs_mach_clicked(){

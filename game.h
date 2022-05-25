@@ -82,6 +82,7 @@ public:
     void show_all_giveup();
 
     void score_record(Mode mode);
+
 private:
     Cardstack cardstack;
     Players players;

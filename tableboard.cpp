@@ -68,19 +68,6 @@ void Tableboard::init_ifhumanplay(){
     ifhumanplay = false;
 }
 
-int Tableboard::get_human_player_index(){
-    return human_player_index;
-}
-int Tableboard::get_human_play_card(){
-    return human_play_card;
-}
-bool Tableboard::get_ifhumanplay(){
-    return ifhumanplay;
-}
-
-bool Tableboard::get_ifgoback(){
-    return ifgoback;
-}
 /********************************************************
  * Process the string to give the filename of the card
 ********************************************************/
@@ -126,23 +113,31 @@ void delaytime(int time){
 /*********************************************************************
  * Functional module: provide the GUI intersurface
 *********************************************************************/
+void Tableboard::hideplaycard(){
+    ui->playcard->hide();
+    ui->current->hide();
+}
+
 void Tableboard::musicplayer(Mode mode){
     switch(mode){
     case(hh):{
-        bgm = new QSound(":/game/music/human_human.wav",this);
-        bgm->setLoops(-1);
+        bgm = new QMediaPlayer;
+        bgm->setMedia(QUrl("qrc:/game/music/human_human.wav"));
+        bgm->setVolume(50);
         bgm->play();
         break;
     }
     case(hm):{
-        bgm = new QSound(":/game/music/human_machine.wav",this);
-        bgm->setLoops(-1);
+        bgm = new QMediaPlayer;
+        bgm->setMedia(QUrl("qrc:/game/music/human_machine.wav"));
+        bgm->setVolume(50);
         bgm->play();
         break;
     }
     case(mm):{
-        bgm = new QSound(":/game/music/machine_machine.wav",this);
-        bgm->setLoops(-1);
+        bgm = new QMediaPlayer;
+        bgm->setMedia(QUrl("qrc:/game/music/machine_machine.wav"));
+        bgm->setVolume(50);
         bgm->play();
         break;
     }
@@ -195,6 +190,7 @@ void Tableboard::turn_down_cards(int player_index, int card_index){
 void Tableboard::update_current(Color c, int num){
     QString filename = filename_of_card(c, num);
     ui->current->setPixmap(QPixmap(filename));
+    ui->current->show();
 }
 
 void Tableboard::update_score(int player_index, int score){
@@ -204,6 +200,7 @@ void Tableboard::update_score(int player_index, int score){
 void Tableboard::update_playcard(Card &card){
      QString filename = filename_of_card(card.GetColor(), card.GetNumber());
      ui->playcard->setPixmap(QPixmap(filename));
+     ui->playcard->show();
 }
 
 void Tableboard::update_turn(int turn){
@@ -281,7 +278,7 @@ void Tableboard::GoBack_slot(){
 void Tableboard::on_pause_clicked(){
     ui->conti->show();
     ifstop = true;
-    bgm->stop();
+    bgm->pause();
 }
 
 void Tableboard::on_conti_clicked(){
@@ -294,13 +291,13 @@ void Tableboard::on_sound_clicked(){
     if(ifmute){
         ui->sound->setIcon(QIcon(":/icon/icon/mute.png"));
         ui->sound->setIconSize(QSize(50,50));
-        bgm->stop();
+        bgm->setMuted(ifmute);
         ifmute = false;
     }
     else{
         ui->sound->setIcon(QIcon(":/icon/icon/sound.png"));
         ui->sound->setIconSize(QSize(50,50));
-        bgm->play();
+        bgm->setMuted(ifmute);
         ifmute = true;
     }
 }
@@ -335,6 +332,8 @@ void Tableboard::endgame(){
     ui->gameover->show();
     ui->pause->hide();
 }
+
+
 
 
 

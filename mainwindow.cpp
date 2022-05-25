@@ -8,7 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->soundeffect->setIcon(QIcon(":/icon/icon/sound.png"));
     ui->soundeffect->setIconSize(QSize(50,50));
-    bgmusic->setLoops(-1);
+    bgmusic->setMedia(QUrl("qrc:/welcome/music/welcome.wav"));
+    bgmusic->setVolume(50);
     bgmusic->play();
     QObject::connect(help_menu, SIGNAL(goback()), this, SLOT(help_goto_main()));
     QObject::connect(playmode, SIGNAL(goback()), this, SLOT(game_goto_main()));
@@ -60,13 +61,13 @@ void MainWindow::on_rank_clicked(){
 
 void MainWindow::on_soundeffect_clicked(){
     if(ifmute){
-        bgmusic->stop();
+        bgmusic->setMuted(ifmute);
         ui->soundeffect->setIcon(QIcon(":/icon/icon/mute.png"));
         ui->soundeffect->setIconSize(QSize(50,50));
         ifmute = false;
     }
     else{
-        bgmusic->play();
+        bgmusic->setMuted(ifmute);
         ui->soundeffect->setIcon(QIcon(":/icon/icon/sound.png"));
         ui->soundeffect->setIconSize(QSize(50,50));
         ifmute = true;

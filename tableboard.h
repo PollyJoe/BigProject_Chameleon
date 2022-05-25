@@ -14,7 +14,8 @@
 #include <QTime>
 #include "card.h"
 #include "player.h"
-#include <QtMultimedia>
+#include <QMediaPlayer>
+#include <QSoundEffect>
 /***************************************************
  * Table :
  *  1. Labels & buttons:
@@ -61,9 +62,10 @@ public:
     friend class Tableboard;
     friend class Game;
     bool ifmute = true;
-    QSound *bgm;
+    QMediaPlayer *bgm = new QMediaPlayer;
 
     void paintEvent(QPaintEvent* event) override;
+
     void hidecards();
     void update_cards(int player_index, int card_index, const Card& card);
     void turn_down_cards(int player_index, int card_index);
@@ -71,21 +73,26 @@ public:
     void update_current(Color c, int num);
     void update_playcard(Card &card);
     void update_turn(int turn);
+
     void start_timer();
     void start_game();
     void player_remind(int player_index);
     void musicplayer(Mode mode);
 
-    int get_human_player_index();
-    int get_human_play_card();
-    bool get_ifhumanplay();
+    int get_human_player_index(){return human_player_index;};
+    int get_human_play_card(){return human_play_card;};
+    bool get_ifhumanplay(){return ifhumanplay;};
     void init_ifhumanplay();
-    bool get_ifgoback();
+    bool get_ifgoback(){return ifgoback;};
 
+    void hideplaycard();
     void countdown(int time);
     void hidecountdown();
     void endgame();
     void pausegame();
+    bool get_ifrestart(){return ifrestart;}
+
+
 
 signals:
     void closegame();
@@ -124,6 +131,7 @@ private:
     bool ifhumanplay;
     bool ifgoback = false;
     bool ifstop = false;
+    bool ifrestart = false;
 };
 
 QString color_of_card(Color c);

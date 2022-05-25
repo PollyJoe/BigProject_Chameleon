@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include "help.h"
 #include "mode.h"
-#include <QSound>
+#include <QMediaPlayer>
 #include "rank.h"
 
 QT_BEGIN_NAMESPACE
@@ -17,7 +17,7 @@ class MainWindow : public QMainWindow{
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    QSound *bgmusic = new QSound(":/welcome/music/welcome.wav",this);
+    QMediaPlayer *bgmusic = new QMediaPlayer;
     bool ifmute = true;
 
 private slots:
