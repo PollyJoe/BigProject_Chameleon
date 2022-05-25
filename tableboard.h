@@ -147,6 +147,8 @@ private:
     bool ifgoback = false;
     bool ifstop = false;
     bool ifrestart = false;
+
+    bool playerturn[player_num] = {false, false};
 };
 
 //Auxiliary part: help to set filename and delay time

@@ -255,16 +255,16 @@ void Tableboard::hidecountdown(){
 ***************************************************************
  * Play cards
 **************************************************************/
-void Tableboard::on_cards_button_1_1_clicked(){emit play(0,0);}
-void Tableboard::on_cards_button_1_2_clicked(){emit play(0,1);}
-void Tableboard::on_cards_button_1_3_clicked(){emit play(0,2);}
-void Tableboard::on_cards_button_1_4_clicked(){emit play(0,3);}
-void Tableboard::on_cards_button_1_5_clicked(){emit play(0,4);}
-void Tableboard::on_cards_button_2_1_clicked(){emit play(1,0);}
-void Tableboard::on_cards_button_2_2_clicked(){emit play(1,1);}
-void Tableboard::on_cards_button_2_3_clicked(){emit play(1,2);}
-void Tableboard::on_cards_button_2_4_clicked(){emit play(1,3);}
-void Tableboard::on_cards_button_2_5_clicked(){emit play(1,4);}
+void Tableboard::on_cards_button_1_1_clicked(){if(playerturn[0]) emit play(0,0);}
+void Tableboard::on_cards_button_1_2_clicked(){if(playerturn[0]) emit play(0,1);}
+void Tableboard::on_cards_button_1_3_clicked(){if(playerturn[0]) emit play(0,2);}
+void Tableboard::on_cards_button_1_4_clicked(){if(playerturn[0]) emit play(0,3);}
+void Tableboard::on_cards_button_1_5_clicked(){if(playerturn[0]) emit play(0,4);}
+void Tableboard::on_cards_button_2_1_clicked(){if(playerturn[1]) emit play(1,0);}
+void Tableboard::on_cards_button_2_2_clicked(){if(playerturn[1]) emit play(1,1);}
+void Tableboard::on_cards_button_2_3_clicked(){if(playerturn[1]) emit play(1,2);}
+void Tableboard::on_cards_button_2_4_clicked(){if(playerturn[1]) emit play(1,3);}
+void Tableboard::on_cards_button_2_5_clicked(){if(playerturn[1]) emit play(1,4);}
 
 /***************************************************************
  * Game service

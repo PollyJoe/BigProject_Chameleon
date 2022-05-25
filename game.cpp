@@ -280,6 +280,7 @@ void Game::play_a_turn(int turn){
 
 void Game::human_play_a_turn(int turn){
     init_ifhumanplay();
+    playerturn[1] = true;
     if(!cardstack.empty()){
         getcard(defense_num);
         mach_getcard(offense_num);
@@ -290,6 +291,7 @@ void Game::human_play_a_turn(int turn){
     game_countdown();
     if(get_ifhumanplay()) human_play_once();
     else play_once(defense_num);
+    playerturn[1] = false;
     delay(2);
     pausegame();
     mach_play_once(offense_num);
@@ -300,21 +302,24 @@ void Game::humans_play_a_turn(int turn){
     if(!cardstack.empty()) {getcard(offense_num); delay(1);}
     if(!cardstack.empty()) {getcard(defense_num); delay(1);}
     for(int i = 0; i < player_num; i++)  check_all_card(i);
-    init_ifhumanplay();
+
+    init_ifhumanplay();playerturn[0] = true;
     update_turn(turn);
     player_remind(offense_num + 1);
     game_countdown();
     if(get_ifhumanplay()) human_play_once();
     else play_once(offense_num);
-    init_ifhumanplay();
-    delay(2);
-    pausegame();
+    playerturn[0] = false;
+
+    init_ifhumanplay();playerturn[1] = true;
+    delay(2);pausegame();
     player_remind(defense_num + 1);
     game_countdown();
     if(get_ifhumanplay()) human_play_once();
     else play_once(defense_num);
-    delay(2);
-    pausegame();
+    playerturn[1] = false;
+
+    delay(2);pausegame();
 }
 
 //Total game
@@ -323,8 +328,7 @@ void Game::mach_vs_mach(){
     int turn = 1;
     show(); pausegame();
     start_game(); pausegame();
-    deal(); pausegame();
-    delay(1);
+    deal(); pausegame();delay(1);
     update_current(current_color, current_num); pausegame();
     delay(1);
     while(!cardstack.empty()){
