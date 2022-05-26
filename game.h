@@ -88,7 +88,7 @@ public:
     //Once
     void play_once(int player_index);
     void mach_play_once(int player_index);  //Only for human-machine mode
-    void human_play_once();
+    void human_play_once(int player_num);
     //Turn
     void play_a_turn(int turn);
     void human_play_a_turn(int turn);
@@ -103,6 +103,8 @@ public:
     void show_giveup(int player_index);
     void show_all_giveup();
     void score_record(Mode mode);
+    void giveup_reminder(int player_index);
+    void confirm_giveup();
 
 private:
     Cardstack cardstack;

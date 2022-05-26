@@ -65,13 +65,21 @@ void Game::human_deal(){
  * Rules
 **********************************************************/
 void Game::CheckValid(bool (*valid_rule)(const Card& card, Game *g), Player& player){
-    for(auto &c : player.cards_inhand) c.SetValid(valid_rule(c, this));
+    player.ifgiveup = true;
+    for(auto &c : player.cards_inhand) {
+        c.SetValid(valid_rule(c, this));
+        if(c.GetValid()) player.ifgiveup = false;
+    }
 }
 
 void Game::CheckChame(bool (*chame_rule)(const Card& card, Game *g), Player& player){
     for(auto &c : player.cards_inhand) c.SetChame(chame_rule(c, this));
 }
 
+void Game::check_all_card(int player_index){
+    CheckValid(valid_rule, players[player_index]);
+    CheckChame(chame_rule, players[player_index]);
+}
 /***********************************************************
  * Machine play
 ***********************************************************/
@@ -95,11 +103,6 @@ void Game::mach_getcard(int player_index){
     players[player_index].cards_inhand.push_back(cardstack.top());
     hidecards();//GUI
     cardstack.pop();
-}
-
-void Game::check_all_card(int player_index){
-    CheckValid(valid_rule, players[player_index]);
-    CheckChame(chame_rule, players[player_index]);
 }
 
 //Strategy
@@ -214,6 +217,7 @@ void Game::check_play(int player_index, Card& cardgiven){
 
 void Game::human_check_play(int player_index, Card& cardgiven){
     if(players[player_index].ifgiveup || !cardgiven.GetValid()){
+        confirm_giveup();
         players[(player_index + 1) % 2].UpdateScore(cardgiven);
         giveup_cards[player_index].append(cardgiven);
     }
@@ -255,9 +259,8 @@ void Game::play_once(int player_index){
     delay(1);
 }
 
-void Game::human_play_once(){
+void Game::human_play_once(int player_index){
     pausegame();
-    check_all_card(get_human_player_index());
     Card cardgiven = givecard(get_human_player_index(), get_human_play_card());
     update_playercard(get_human_player_index());
     human_check_play(get_human_player_index(), cardgiven);
@@ -286,10 +289,11 @@ void Game::human_play_a_turn(int turn){
         mach_getcard(offense_num);
         delay(1);
     }
-    for(int i = 0; i < player_num; i++)  check_all_card(i);
+    check_all_card(defense_num);
     update_turn(turn);
+    giveup_reminder(defense_num);
     game_countdown();
-    if(get_ifhumanplay()) human_play_once();
+    if(get_ifhumanplay()) human_play_once(defense_num);
     else play_once(defense_num);
     playerturn[1] = false;
     delay(2);
@@ -301,21 +305,27 @@ void Game::human_play_a_turn(int turn){
 void Game::humans_play_a_turn(int turn){
     if(!cardstack.empty()) {getcard(offense_num); delay(1);}
     if(!cardstack.empty()) {getcard(defense_num); delay(1);}
-    for(int i = 0; i < player_num; i++)  check_all_card(i);
+    //for(int i = 0; i < player_num; i++)  check_all_card(i);
 
-    init_ifhumanplay();playerturn[0] = true;
+    init_ifhumanplay();
+    playerturn[0] = true;
     update_turn(turn);
+    check_all_card(offense_num);
     player_remind(offense_num + 1);
+    giveup_reminder(offense_num);
     game_countdown();
-    if(get_ifhumanplay()) human_play_once();
+    if(get_ifhumanplay()) human_play_once(offense_num);
     else play_once(offense_num);
     playerturn[0] = false;
 
-    init_ifhumanplay();playerturn[1] = true;
+    init_ifhumanplay();
+    playerturn[1] = true;
     delay(2);pausegame();
+    check_all_card(defense_num);
     player_remind(defense_num + 1);
+    giveup_reminder(defense_num);
     game_countdown();
-    if(get_ifhumanplay()) human_play_once();
+    if(get_ifhumanplay()) human_play_once(defense_num);
     else play_once(defense_num);
     playerturn[1] = false;
 
@@ -391,6 +401,22 @@ void Game::game_countdown(){
         delay(1);
     }
     hidecountdown();
+}
+
+void Game::giveup_reminder(int player_index){
+    if(players[player_index].ifgiveup){
+        QMessageBox msgBox;
+        msgBox.setText("Oops! You have no card to play! You have to give up a card!");
+        msgBox.setInformativeText("Please choose a card to give up.");
+        msgBox.exec();
+    }
+}
+
+void Game::confirm_giveup(){
+    QMessageBox msgBox;
+    msgBox.setText("Give up?");
+    msgBox.setInformativeText("This card will be treated as giving up! Confirm to play it?");
+    msgBox.exec();
 }
 
 void Game::show_giveup(int player_index){
