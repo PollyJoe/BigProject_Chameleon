@@ -102,7 +102,6 @@ public:
     //Game service: start,end and pause
     void start_game();
     void endgame();
-    void pausegame();
 
     //Background music
 
@@ -133,6 +132,8 @@ private slots:
     void on_pause_clicked();
     void on_conti_clicked();
     void on_sound_clicked();
+
+    void on_pushButton_clicked();
 
 private:
     Ui::Tableboard *ui;

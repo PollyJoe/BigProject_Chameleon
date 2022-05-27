@@ -7,7 +7,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -33,7 +33,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -72,10 +72,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/card.cpp"
+        "/Users/polly/Desktop/src/card.cpp"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/card.cpp"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/card.cpp"
 },
 {
     "arguments": [
@@ -85,7 +85,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -111,7 +111,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -150,10 +150,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/game.cpp"
+        "/Users/polly/Desktop/src/game.cpp"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/game.cpp"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/game.cpp"
 },
 {
     "arguments": [
@@ -163,7 +163,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -189,7 +189,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -228,10 +228,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/help.cpp"
+        "/Users/polly/Desktop/src/help.cpp"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/help.cpp"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/help.cpp"
 },
 {
     "arguments": [
@@ -241,7 +241,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -267,7 +267,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -306,10 +306,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/main.cpp"
+        "/Users/polly/Desktop/src/main.cpp"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/main.cpp"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/main.cpp"
 },
 {
     "arguments": [
@@ -319,7 +319,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -345,7 +345,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -384,10 +384,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/mainwindow.cpp"
+        "/Users/polly/Desktop/src/mainwindow.cpp"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/mainwindow.cpp"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/mainwindow.cpp"
 },
 {
     "arguments": [
@@ -397,7 +397,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -423,7 +423,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -462,10 +462,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/mode.cpp"
+        "/Users/polly/Desktop/src/mode.cpp"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/mode.cpp"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/mode.cpp"
 },
 {
     "arguments": [
@@ -475,7 +475,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -501,7 +501,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -540,10 +540,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/player.cpp"
+        "/Users/polly/Desktop/src/player.cpp"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/player.cpp"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/player.cpp"
 },
 {
     "arguments": [
@@ -553,7 +553,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -579,7 +579,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -618,10 +618,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/rank.cpp"
+        "/Users/polly/Desktop/src/rank.cpp"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/rank.cpp"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/rank.cpp"
 },
 {
     "arguments": [
@@ -631,7 +631,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -657,7 +657,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -696,10 +696,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/tableboard.cpp"
+        "/Users/polly/Desktop/src/tableboard.cpp"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/tableboard.cpp"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/tableboard.cpp"
 },
 {
     "arguments": [
@@ -709,7 +709,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -735,7 +735,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -774,10 +774,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/Constant.h"
+        "/Users/polly/Desktop/src/Constant.h"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/Constant.h"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/Constant.h"
 },
 {
     "arguments": [
@@ -787,7 +787,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -813,7 +813,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -852,10 +852,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/card.h"
+        "/Users/polly/Desktop/src/card.h"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/card.h"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/card.h"
 },
 {
     "arguments": [
@@ -865,7 +865,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -891,7 +891,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -930,10 +930,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/game.h"
+        "/Users/polly/Desktop/src/game.h"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/game.h"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/game.h"
 },
 {
     "arguments": [
@@ -943,7 +943,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -969,7 +969,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -1008,10 +1008,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/help.h"
+        "/Users/polly/Desktop/src/help.h"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/help.h"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/help.h"
 },
 {
     "arguments": [
@@ -1021,7 +1021,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -1047,7 +1047,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -1086,10 +1086,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/mainwindow.h"
+        "/Users/polly/Desktop/src/mainwindow.h"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/mainwindow.h"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/mainwindow.h"
 },
 {
     "arguments": [
@@ -1099,7 +1099,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -1125,7 +1125,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -1164,10 +1164,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/mode.h"
+        "/Users/polly/Desktop/src/mode.h"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/mode.h"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/mode.h"
 },
 {
     "arguments": [
@@ -1177,7 +1177,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -1203,7 +1203,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -1242,10 +1242,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/player.h"
+        "/Users/polly/Desktop/src/player.h"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/player.h"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/player.h"
 },
 {
     "arguments": [
@@ -1255,7 +1255,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -1281,7 +1281,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -1320,10 +1320,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/rank.h"
+        "/Users/polly/Desktop/src/rank.h"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/rank.h"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/rank.h"
 },
 {
     "arguments": [
@@ -1333,7 +1333,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -1359,7 +1359,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -1398,10 +1398,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/tableboard.h"
+        "/Users/polly/Desktop/src/tableboard.h"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/tableboard.h"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/tableboard.h"
 },
 {
     "arguments": [
@@ -1411,7 +1411,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -1437,7 +1437,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -1476,10 +1476,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/ui_rank.h"
+        "/Users/polly/Desktop/src/ui_tableboard.h"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/ui_rank.h"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/ui_tableboard.h"
 },
 {
     "arguments": [
@@ -1489,7 +1489,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -1515,7 +1515,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -1554,10 +1554,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/ui_mode.h"
+        "/Users/polly/Desktop/src/ui_mode.h"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/ui_mode.h"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/ui_mode.h"
 },
 {
     "arguments": [
@@ -1567,7 +1567,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -1593,7 +1593,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -1632,10 +1632,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/ui_mainwindow.h"
+        "/Users/polly/Desktop/src/ui_mainwindow.h"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/ui_mainwindow.h"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/ui_mainwindow.h"
 },
 {
     "arguments": [
@@ -1645,7 +1645,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -1671,7 +1671,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -1710,10 +1710,10 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/ui_tableboard.h"
+        "/Users/polly/Desktop/src/ui_rank.h"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/ui_tableboard.h"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/ui_rank.h"
 },
 {
     "arguments": [
@@ -1723,7 +1723,7 @@
         "-I",
         "/Applications/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
         "-I",
-        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-pIDhUt/clang-uiheader-EYAUtO",
+        "/private/var/folders/z7/9z1s_2xx5r94x70trs9924j80000gn/T/QtCreator-sfqmeW/clang-uiheader-aQZpGC",
         "-nostdinc",
         "-nostdinc++",
         "-arch",
@@ -1749,7 +1749,7 @@
         "-DQT_NETWORK_LIB",
         "-DQT_CORE_LIB",
         "-I",
-        "/Users/polly/Desktop/BigProject_Chameleon",
+        "/Users/polly/Desktop/src",
         "-I",
         "/Users/polly/Qt/5.15.2/clang_64/lib/QtMultimedia.framework/Headers",
         "-I",
@@ -1788,9 +1788,9 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/polly/Desktop/BigProject_Chameleon/ui_help.h"
+        "/Users/polly/Desktop/src/ui_help.h"
     ],
-    "directory": "/Users/polly/Desktop/BigProject_Chameleon/.qtc_clangd",
-    "file": "/Users/polly/Desktop/BigProject_Chameleon/ui_help.h"
+    "directory": "/Users/polly/Desktop/src/.qtc_clangd",
+    "file": "/Users/polly/Desktop/src/ui_help.h"
 }
 ]

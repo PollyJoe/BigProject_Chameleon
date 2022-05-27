@@ -5,6 +5,7 @@ Tableboard::Tableboard(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Tableboard)
 {
+    this->setAttribute(Qt::WA_DeleteOnClose, false);
     ui->setupUi(this);
     setWindowTitle("Game");
     ui->sound->setIcon(QIcon(":/icon/icon/sound.png"));
@@ -39,7 +40,7 @@ Tableboard::Tableboard(QWidget *parent) :
     ui->conti->setIcon(QIcon(":/icon/icon/continue.png"));
     ui->conti->setIconSize(QSize(141,141));
     ui->conti->hide();
-    ui->GoBack->hide();
+    //ui->GoBack->hide();
     ui->countdown->hide();
 
     //Connection
@@ -136,16 +137,18 @@ void delaytime(int time){
 void Tableboard::start_game(){
     ui->gameover->setText("READY?");
     delaytime(1);
-    pausegame();
-    for(int i = 3; i >=0; i--){ui->gameover->setText(QString::number(i));delaytime(1);pausegame();}
+    //pausegame();
+    for(int i = 3; i >=0; i--){ui->gameover->setText(QString::number(i));delaytime(1);//pausegame();
+    }
     ui->gameover->setText("START!");
-    pausegame();
+   // pausegame();
     delaytime(1);
-    pausegame();
+   // pausegame();
     ui->gameover->hide();
 }
 
 void Tableboard::endgame(){
+    bgm->stop();
     ui->cards_button_1_1->hide();
     ui->cards_button_1_2->hide();
     ui->cards_button_1_3->hide();
@@ -166,11 +169,6 @@ void Tableboard::endgame(){
     ui->pause->hide();
 }
 
-void Tableboard::pausegame(){
-    while(ifstop){
-        delaytime(1);
-    }
-}
 
 /***********************************************************
  * Reminders
@@ -310,9 +308,8 @@ void Tableboard::human_play_slot(int player_index, int card_index){
     ifhumanplay = true;
 }
 
-
-
-
-
-
+void Tableboard::on_pushButton_clicked(){
+    QApplication::quit();
+    QApplication::exit();
+}
 

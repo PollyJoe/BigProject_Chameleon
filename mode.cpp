@@ -14,7 +14,7 @@ mode::~mode(){
 }
 
 void mode::on_mach_vs_mach_clicked(){
-    this->hide();
+    //this->hide();
     game = new Game;
     game->mach_vs_mach();
     game->endgame();
@@ -29,7 +29,7 @@ void mode::on_mach_vs_mach_clicked(){
 }
 
 void mode::on_human_vs_mach_clicked(){
-    this->hide();
+    //this->hide();
     game = new Game;
     game->human_vs_mach();
     game->endgame();
@@ -48,7 +48,7 @@ void mode::on_goback_clicked(){
 }
 
 void mode::on_mach_vs_mach_2_clicked(){
-    this->hide();
+    //this->hide();
     game = new Game;
     game->human_vs_human();
     game->endgame();
@@ -64,6 +64,6 @@ void mode::on_mach_vs_mach_2_clicked(){
 
 
 void mode::on_pushButton_clicked(){
-    QApplication::exit();
+    QCoreApplication::exit();
 }
 

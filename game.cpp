@@ -456,6 +456,23 @@ void Game::score_record(Mode mode){
     file.close();
 }
 
+void Game::pausegame(){
+    while(ifstop){
+        delay(1);
+        //if(ifgoback) cleargame();
+    }
+    //if(ifgoback) {cleargame();}
+}
+/*
+void Game::cleargame(){
+    while(!cardstack.empty()) cardstack.pop();
+    for(int i = 0;i < player_num;i++ ){
+        players[i].cards_inhand.clear();
+    }
+    //players.clear();
+    endgame();
+}
+*/
 /********************************************************************
  * Auxiliary
 ********************************************************************/

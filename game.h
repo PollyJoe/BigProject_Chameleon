@@ -105,6 +105,8 @@ public:
     void score_record(Mode mode);
     void giveup_reminder(int player_index);
     void confirm_giveup();
+    void pausegame();
+    void cleargame();
 
 private:
     Cardstack cardstack;
