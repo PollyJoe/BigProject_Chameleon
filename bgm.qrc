@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/welcome">
-        <file>music/Welcome_bgm.wav</file>
         <file>music/welcome.wav</file>
     </qresource>
     <qresource prefix="/game">

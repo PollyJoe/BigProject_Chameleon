@@ -1,3 +1,8 @@
+/// 我确认本程序完全由本人独立完成。
+/// 姓名：周懿
+/// 学号：2021013053
+/// 时间：2022年6月1日
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -22,7 +27,7 @@ MainWindow::~MainWindow(){
 }
 
 
-//Mainwindow slots
+///Mainwindow slots
 void MainWindow::help_goto_main(){
     help_menu->hide();
     this->show();
@@ -38,7 +43,7 @@ void MainWindow::rank_goto_main(){
     record_sheet->hide();
     this->show();
 }
-//Mainwindow buttons
+///Mainwindow buttons
 void MainWindow::on_exit_clicked(){
     QApplication::exit();
 }

@@ -1,3 +1,8 @@
+/// 我确认本程序完全由本人独立完成。
+/// 姓名：周懿
+/// 学号：2021013053
+/// 时间：2022年6月1日
+
 #ifndef RANK_H
 #define RANK_H
 
@@ -19,7 +24,7 @@ public:
 signals:
     void goback();
 private slots:
-    void on_pushButton_clicked();
+    void on_pushButton_clicked();   /*Go back to main menu*/
 
 private:
     Ui::Rank *ui;

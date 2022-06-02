@@ -1,3 +1,8 @@
+/// 我确认本程序完全由本人独立完成。
+/// 姓名：周懿
+/// 学号：2021013053
+/// 时间：2022年6月1日
+
 #include "card.h"
 #include <vector>
 
@@ -6,7 +11,7 @@ using namespace std;
 /***************************************
  * For cards:
  *  Get the point of the card
-***************************************/
+ *************************************/
 int Card::GetPoint()const{
     int point = 0;
     if(this->number == 13 || this->number == 11) point = 0;
@@ -19,7 +24,7 @@ int Card::GetPoint()const{
  * For cardstack:
  *  1. Push cards
  *  2. Shuffle
-***************************************/
+ **************************************/
 void stack_init(Cardstack &cardstack){
     vector<int> n;
     int i;

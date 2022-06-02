@@ -1,3 +1,8 @@
+/// 我确认本程序完全由本人独立完成。
+/// 姓名：周懿
+/// 学号：2021013053
+/// 时间：2022年6月1日
+
 #ifndef MODE_H
 #define MODE_H
 
@@ -20,13 +25,11 @@ public:
 signals:
     void goback();
 private slots:
-    void on_goback_clicked();
-    void on_mach_vs_mach_clicked();
-    void on_human_vs_mach_clicked();
-
-    void on_mach_vs_mach_2_clicked();
-
-    void on_pushButton_clicked();
+    void on_goback_clicked();           /*Go back to mode list*/
+    void on_mach_vs_mach_clicked();     /*Machine-machine mode*/
+    void on_human_vs_mach_clicked();    /*Human-machine mode*/
+    void on_mach_vs_mach_2_clicked();   /*Human-human mode*/
+    void on_pushButton_clicked();       /*Exit game*/
 
 private:
     Ui::mode *ui;

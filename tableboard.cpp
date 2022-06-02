@@ -1,3 +1,9 @@
+/// 我确认本程序完全由本人独立完成。
+/// 姓名：周懿
+/// 学号：2021013053
+/// 时间：2022年6月1日
+
+
 #include "tableboard.h"
 #include "ui_tableboard.h"
 
@@ -10,8 +16,8 @@ Tableboard::Tableboard(QWidget *parent) :
     ui->sound->setIcon(QIcon(":/icon/icon/sound.png"));
     ui->sound->setIconSize(QSize(50,50));
 
-    //Put the objects into the vector
-    //Cards
+    ///Put the objects into the vector
+    ///Cards
     player1_cards_button.append(ui->cards_button_1_1);
     player1_cards_button.append(ui->cards_button_1_2);
     player1_cards_button.append(ui->cards_button_1_3);
@@ -24,16 +30,16 @@ Tableboard::Tableboard(QWidget *parent) :
     player2_cards_button.append(ui->cards_button_2_5);
     player_cards_button.append(player1_cards_button);
     player_cards_button.append(player2_cards_button);
-    //Players
+    ///Players
     players_label.append(ui->player1);
     players_label.append(ui->player2);
-    //Score
+    ///Score
     score_label.append(ui->score_1);
     score_label.append(ui->score_2);
     ui->score_1->setText("0");
     ui->score_2->setText("0");   
 
-    //Pause/continue, go-back button, and countdown initialization
+    ///Pause/continue, go-back button, and countdown initialization
     ui->pause->setIcon(QIcon(":/icon/icon/pause.png"));
     ui->pause->setIconSize(QSize(50,50));
     ui->conti->setIcon(QIcon(":/icon/icon/continue.png"));
@@ -42,7 +48,7 @@ Tableboard::Tableboard(QWidget *parent) :
     ui->GoBack->hide();
     ui->countdown->hide();
 
-    //Connection
+    ///Connection
     QObject::connect(this, SIGNAL(play(int,int)), this, SLOT(human_play_slot(int,int)));
     QObject::connect(this, SIGNAL(closegame()),this,SLOT(GoBack_slot()));
 
@@ -54,7 +60,7 @@ Tableboard::~Tableboard(){
 
 /**********************************************************
  * Set the theme
-**********************************************************/
+ **********************************************************/
 void Tableboard::paintEvent(QPaintEvent *event){
     QStyleOption opt;
     opt.initFrom(this);
@@ -91,7 +97,7 @@ void Tableboard::musicplayer(Mode mode){
 
 /********************************************************
  * Auxiliary module: filename and delaytime
-********************************************************/
+ ********************************************************/
 QString color_of_card(Color c){
     QString s1;
     switch(c){
@@ -132,7 +138,7 @@ void delaytime(int time){
 
 /*********************************************************************
  * Game service
-*********************************************************************/
+ *********************************************************************/
 void Tableboard::start_game(){
     ui->gameover->setText("READY?");
     delaytime(1);
@@ -174,7 +180,7 @@ void Tableboard::pausegame(){
 
 /***********************************************************
  * Reminders
-***********************************************************/
+ ***********************************************************/
 void Tableboard::player_remind(int player_index){
     ui->playcard->hide();
     ui->gameover->setText("Player " + QString::number(player_index) + "'s turn");
@@ -192,7 +198,7 @@ void Tableboard::update_turn(int turn){
 
 /************************************************************
  * Current situation
-************************************************************/
+ ************************************************************/
 void Tableboard::update_playcard(Card &card){
      QString filename = filename_of_card(card.GetColor(), card.GetNumber());
      ui->playcard->setPixmap(QPixmap(filename));
@@ -212,7 +218,7 @@ void Tableboard::update_current(Color c, int num){
 
 /************************************************************
  * Players
-************************************************************/
+ ************************************************************/
 void Tableboard::hidecards(){
     QString filename = ":/image/Card/back_img.png";
     int i;
@@ -240,7 +246,7 @@ void Tableboard::update_score(int player_index, int score){
 
 /*********************************************************
  *Countdown
-*********************************************************/
+ *********************************************************/
 void Tableboard::countdown(int time){
     ui->countdown->setText(QString::number(time));
     ui->countdown->show();
@@ -252,9 +258,9 @@ void Tableboard::hidecountdown(){
 
 /**************************************************************
  * All the slots
-***************************************************************
+ **************************************************************
  * Play cards
-**************************************************************/
+ **************************************************************/
 void Tableboard::on_cards_button_1_1_clicked(){if(playerturn[0]) emit play(0,0);}
 void Tableboard::on_cards_button_1_2_clicked(){if(playerturn[0]) emit play(0,1);}
 void Tableboard::on_cards_button_1_3_clicked(){if(playerturn[0]) emit play(0,2);}
@@ -268,11 +274,11 @@ void Tableboard::on_cards_button_2_5_clicked(){if(playerturn[1]) emit play(1,4);
 
 /***************************************************************
  * Game service
-***************************************************************/
-//Go back
+ ***************************************************************/
+///Go back
 void Tableboard::on_GoBack_clicked(){emit closegame();}
 
-//Pause/Continue
+///Pause/Continue
 void Tableboard::GoBack_slot(){ifgoback = true;}
 
 void Tableboard::on_pause_clicked(){
@@ -287,7 +293,7 @@ void Tableboard::on_conti_clicked(){
     if(ifmute) bgm->play();
 }
 
-//Sound effect
+///Sound effect
 void Tableboard::on_sound_clicked(){
     if(ifmute){
         ui->sound->setIcon(QIcon(":/icon/icon/mute.png"));
@@ -303,7 +309,7 @@ void Tableboard::on_sound_clicked(){
     }
 }
 
-//Play or trustseeing
+///Play or trustseeing
 void Tableboard::human_play_slot(int player_index, int card_index){
     human_player_index = player_index;
     human_play_card = card_index;

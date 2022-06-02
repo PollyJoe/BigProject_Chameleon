@@ -1,3 +1,8 @@
+/// 我确认本程序完全由本人独立完成。
+/// 姓名：周懿
+/// 学号：2021013053
+/// 时间：2022年6月1日
+
 #include "game.h"
 #include "mainwindow.h"
 #include <QTimer>
@@ -5,32 +10,12 @@
 #include <QCoreApplication>
 #include <cmath>
 
-
-/************************************************************
- * Process of a game:
- *  1. Initialize a cardstack
- *  2. Deal the card to players
- *  3. Play the card (rules have been finished in C project)
- *  4. End the game once the stack and vectors are all empty
- * Props of one game:
- *  1. Cards (stack)
- *  2. Players
- * Operations inside a game:
- *  1. Deal the card
- *  2. Play:
- *      (1) Give a card
- *          1) Check the calidity
- *          2) Choose a card due to the strategy/Human choose one card to play
- *      (2) Check the result of each turn
- *      (3) Take a card and start a new turn
-************************************************************/
-
 /************************************************************
  * Preparation for a new game
  *  1. Constructor
  *  2. Deal the card
  *  3. Update current situation
-************************************************************/
+ ***********************************************************/
 Game::Game(){
     stack_init(cardstack);
     players_init(players);
@@ -63,7 +48,7 @@ void Game::human_deal(){
 
 /**********************************************************
  * Rules
-**********************************************************/
+ *********************************************************/
 void Game::CheckValid(bool (*valid_rule)(const Card& card, Game *g), Player& player){
     player.ifgiveup = true;
     for(auto &c : player.cards_inhand) {
@@ -82,8 +67,8 @@ void Game::check_all_card(int player_index){
 }
 /***********************************************************
  * Machine play
-***********************************************************/
-//Basic operation
+ **********************************************************/
+///Basic operation
 Card Game::givecard(int player_index, int position){
     players[player_index].null_slot = position;
     Card givecard = players[player_index].cards_inhand[position];
@@ -94,18 +79,18 @@ Card Game::givecard(int player_index, int position){
 
 void Game::getcard(int player_index){
     players[player_index].cards_inhand.push_back(cardstack.top());
-    update_cards(player_index, max_inhand - 1, cardstack.top());//GUI
+    update_cards(player_index, max_inhand - 1, cardstack.top());
     cardstack.pop();
 }
 
+///Only for human-machine mode
 void Game::mach_getcard(int player_index){
-    //Only for human-machine mode
     players[player_index].cards_inhand.push_back(cardstack.top());
-    hidecards();//GUI
+    hidecards();
     cardstack.pop();
 }
 
-//Strategy
+///Strategy
 int Game::select_card(bool valid_rule(const Card& card, Game *g), bool (*chame_rule)(const Card& card, Game *g), int player_index){
    int index = -1;
    int chame = 0;
@@ -131,6 +116,7 @@ int Game::select_card(bool valid_rule(const Card& card, Game *g), bool (*chame_r
        }
    }
    if(!players[player_index].ifgiveup) {if(index == -1)index = chame;}
+
    //Play the smallest
    else{
        index = 0;
@@ -176,7 +162,7 @@ Color Game::select_color(int player_index){
 
 /********************************************************************
  * Human play
-********************************************************************/
+ *******************************************************************/
 Color Game::human_select_color(){
     Color color;
     QMessageBox msgBox;
@@ -199,7 +185,7 @@ Color Game::human_select_color(){
 
 /*********************************************************************
  * Background check
-*********************************************************************/
+ ********************************************************************/
 void Game::check_play(int player_index, Card& cardgiven){
     if(players[player_index].ifgiveup || !cardgiven.GetValid()){
         players[(player_index + 1) % 2].UpdateScore(cardgiven);
@@ -240,7 +226,7 @@ void Game::update_playercard(int player_index){
 
 /**************************************************************
  * Encapsulate the game
-**************************************************************/
+ *************************************************************/
 //Once
 void Game::mach_play_once(int player_index){
     hidecards();
@@ -305,7 +291,6 @@ void Game::human_play_a_turn(int turn){
 void Game::humans_play_a_turn(int turn){
     if(!cardstack.empty()) {getcard(offense_num); delay(1);}
     if(!cardstack.empty()) {getcard(defense_num); delay(1);}
-    //for(int i = 0; i < player_num; i++)  check_all_card(i);
 
     init_ifhumanplay();
     playerturn[0] = true;
@@ -332,7 +317,7 @@ void Game::humans_play_a_turn(int turn){
     delay(2);pausegame();
 }
 
-//Total game
+///Total game
 void Game::mach_vs_mach(){
    musicplayer(mm);
     int turn = 1;
@@ -391,7 +376,7 @@ void Game::human_vs_human(){
 
 /**********************************************************
  * Game service
-**********************************************************/
+ **********************************************************/
 void Game::game_countdown(){
     int time = 6;
     while(!get_ifhumanplay() && time > 0){
@@ -458,7 +443,7 @@ void Game::score_record(Mode mode){
 
 /********************************************************************
  * Auxiliary
-********************************************************************/
+ ********************************************************************/
 bool valid_rule(const Card& card, Game *g){
     return (card.GetColor() == g->current_color) || (card.GetNumber() == g->current_num) || (card.GetNumber() == 11);
 }
